@@ -73,18 +73,15 @@ app.use(compression());
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 
-// redirect stuff... after set the cookie session middleware
-app.get("/welcome", (req, res) => {
+app.get("/home", (req, res) => {
     if (req.session.userId) {
-    //they shouldn't be allowed to see /welcome
         res.redirect("/");
     } else {
-    //the user is allowed to see the welcome page
         res.sendFile(path.join(__dirname, "..", "client", "index.html"));
     }
 });
 
-app.post("/registration", (req, res) => {
+app.post("/home/registration", (req, res) => {
     const { first, last, email, password} = req.body;
     hash(password)
         .then((hashedPw) => {
@@ -103,7 +100,7 @@ app.post("/registration", (req, res) => {
         });
 });
 
-app.post("/welcome/login", (req, res) => {
+app.post("/home/login", (req, res) => {
     const { email, password } = req.body;
     db.getUserInfo(email)
         .then(({ rows }) => {
@@ -129,7 +126,7 @@ app.post("/welcome/login", (req, res) => {
         });
 });
 
-app.post("/welcome/reset-password/start", (req, res) => {
+app.post("/home/reset-password/start", (req, res) => {
     const { email } = req.body;
     db.getUserEmail(email)
         .then(({ rows }) => {
@@ -174,7 +171,7 @@ Team Social Network`;
         });
 });
 
-app.post("/welcome/reset-password/verify", (req, res) => {
+app.post("/home/reset-password/verify", (req, res) => {
     const { email, resetCode, password } = req.body;
     db.getCode(email)
         .then(({ rows }) => {
@@ -381,7 +378,7 @@ app.post("/delete-account", (req, res) => {
                         .then(() => {
                             console.log("next3");
                             req.session.userId = null;
-                            res.redirect("/welcome");
+                            res.redirect("/home");
                         })
                         .catch((error) => {
                             console.log("error deleteAccountUsers", error);
@@ -412,7 +409,7 @@ app.post('/delete-comment', (req, res) => {
 //ALWAYS AT THE END BEFORE THE app.listen
 app.get("*", function (req, res) {
     if (!req.session.userId) {
-        res.redirect("/welcome");
+        res.redirect("/home");
     } else {
         res.sendFile(path.join(__dirname, "..", "client", "index.html"));
     }
@@ -424,10 +421,10 @@ server.listen(process.env.PORT || 3001, function () {
 
 //this is our socket code. we will write 100% of our erver-side socket code here
 io.on('connection', (socket) => {
-    console.log(`Socket with id ${socket.id} just connected!`);
-    console.log(
-        `UserId ${socket.request.session.userId} just connected!`
-    );
+    // console.log(`Socket with id ${socket.id} just connected!`);
+    // console.log(
+    //     `UserId ${socket.request.session.userId} just connected!`
+    // );
 
     //when the user post a new message...
     socket.on("New message", (data) => {

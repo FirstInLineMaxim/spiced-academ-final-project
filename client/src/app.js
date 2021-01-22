@@ -8,6 +8,7 @@ import Logo from "./logo";
 import FindPeople from "./findPeople";
 import Friends from './friends';
 import Chat from "./chat";
+import Questionnaire from "./questionnaire";
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { FaSearch, FaUserFriends, FaComments } from "react-icons/fa";
@@ -164,6 +165,17 @@ export default class App extends Component {
                         render={(props) => (
                             <Chat
                                 loggedId={this.state.id}
+                                match={props.match}
+                                key={props.match.url}
+                                history={props.history}
+                            />
+                        )}
+                    />
+
+                    <Route
+                        path="/questionnaire"
+                        render={(props) => (
+                            <Questionnaire
                                 match={props.match}
                                 key={props.match.url}
                                 history={props.history}

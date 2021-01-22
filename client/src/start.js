@@ -15,7 +15,7 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(reduxPromise))
 );
 
-if (location.pathname === "/welcome") {
+if (location.pathname === "/home") {
     elem = <Welcome />;
 } else {
     init(store);

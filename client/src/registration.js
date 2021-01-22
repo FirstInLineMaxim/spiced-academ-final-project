@@ -1,6 +1,3 @@
-//Registration will be a class component, because it will need to do some logic
-//Add logic (input) and state (store) will work together
-
 import { Component } from "react";
 import axios from "./axios";
 import { Link } from "react-router-dom";
@@ -14,10 +11,7 @@ export default class Registration extends Component {
     }
 
     handleChange(e) {
-        //it takes the user input and store it in state
-        //add the input's info to state
         this.setState({
-            //name of input field: user input field
             [e.target.name]: e.target.value,
         }, 
         () => console.log("this.state in handleChange: ")
@@ -28,15 +22,16 @@ export default class Registration extends Component {
         console.log("handleClick ", this.state);
         e.preventDefault();
         axios
-            .post("/registration", this.state)
-            .then(( { data }) => {
+            .post("/home/registration", this.state)
+            .then(({ data }) => {
                 console.log("data", data);
-                if(data.error) {
+                if (data.error) {
                     this.setState({
                         error: true,
                     });
                 } else {
-                    location.replace("/");
+                    //relocate to questionary page
+                    location.replace("/questionnaire");
                 }
             })
             .catch((error) => {

@@ -24,7 +24,7 @@ export default class ResetPassword extends Component {
         console.log("handleClick ", this.state);
         e.preventDefault();
         axios
-            .post("/welcome/reset-password/start", this.state)
+            .post("/home/reset-password/start", this.state)
             .then(({ data }) => {
                 console.log("data ", data);
                 if (!data.success) {
@@ -52,7 +52,7 @@ export default class ResetPassword extends Component {
         console.log("handleClick ", this.state);
         e.preventDefault();
         axios
-            .post("/welcome/reset-password/verify", this.state)
+            .post("/home/reset-password/verify", this.state)
             .then(({ data }) => {
                 console.log("res ", data);
                 if (!data.success) {
