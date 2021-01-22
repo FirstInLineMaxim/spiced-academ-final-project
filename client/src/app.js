@@ -173,7 +173,7 @@ export default class App extends Component {
                     />
 
                     <Route
-                        path="/questionnaire"
+                        path="/survey"
                         render={(props) => (
                             <Questionnaire
                                 match={props.match}

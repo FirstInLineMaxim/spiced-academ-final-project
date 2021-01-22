@@ -74,11 +74,11 @@ app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 
 app.get("/home", (req, res) => {
-    if (req.session.userId) {
-        res.redirect("/");
-    } else {
+    // if (req.session.userId) {
+    //     res.redirect("/");
+    // } else {
         res.sendFile(path.join(__dirname, "..", "client", "index.html"));
-    }
+    // }
 });
 
 app.post("/home/registration", (req, res) => {
@@ -406,6 +406,20 @@ app.post('/delete-comment', (req, res) => {
         });
 });
 
+app.post("/questionnaire", (req, res) => {
+    const { hairType, hairHealth } = req.body;
+    console.log("post request on /questionnaire", req.body);
+    db.addSurveyResults(req.session.userId, hairType, hairHealth)
+        .then(() => {
+            console.log("addSurveyResults worked");
+            res.json({ success: true });
+        })
+        .catch((error) => {
+            console.log("error in addSurveyResults", error);
+            res.json({ error: true });
+        });
+});
+
 //ALWAYS AT THE END BEFORE THE app.listen
 app.get("*", function (req, res) {
     if (!req.session.userId) {
@@ -461,6 +475,6 @@ io.on('connection', (socket) => {
         });
     
     socket.on("disconnect", () => {
-        console.log(`Socket with id: ${socket.id} just disconnected`);
+        // console.log(`Socket with id: ${socket.id} just disconnected`);
     });
 });// closes io.on('connection')

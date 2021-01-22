@@ -5,6 +5,7 @@ const db = spicedPg(
 );
 
 /////////////////////////QUERY for register///////////////////////////
+
 module.exports.addUser = (firstName, lastName, email, password) => {
     const q = `
     INSERT INTO users (first_name, last_name, email, password) 
@@ -12,6 +13,18 @@ module.exports.addUser = (firstName, lastName, email, password) => {
     RETURNING id;
     `;
     const params = [firstName, lastName, email, password];
+    return db.query(q, params);
+};
+
+/////////////////////////QUERY for survey///////////////////////////
+
+module.exports.addSurveyResults = (userId, hair_type, hair_health) => {
+    const q = `
+        UPDATE users 
+        SET hair_type=$2, hair_health=$3
+        WHERE id=$1;
+    `;
+    const params = [userId, hair_type, hair_health];
     return db.query(q, params);
 };
 
