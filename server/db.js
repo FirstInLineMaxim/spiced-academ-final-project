@@ -84,7 +84,7 @@ module.exports.editPassword = (email, password) => {
 /////////////////////////QUERY for upload picture/////////////////////////
 module.exports.getUserProfile = (userId) => {
     const q = `
-        SELECT id, first_name, last_name, CONCAT (first_name, ' ', last_name) AS full_name, email, bio, profile_pic
+        SELECT id, first_name, last_name, CONCAT (first_name, ' ', last_name) AS full_name, bio, profile_pic, hair_health, hair_type
         FROM users
         WHERE id = $1;
         `;

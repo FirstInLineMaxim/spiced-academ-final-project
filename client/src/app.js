@@ -9,6 +9,8 @@ import FindPeople from "./findPeople";
 import Friends from './friends';
 import Chat from "./chat";
 import Questionnaire from "./questionnaire";
+import Menu from './menu';
+import Account from "./account";
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { FaSearch, FaUserFriends, FaComments } from "react-icons/fa";
@@ -21,10 +23,12 @@ export default class App extends Component {
             first: "",
             last: "",
             full_name: "",
-            email: "",
             bio: "",
-            image: "", //definir a default image aqui!!
+            image: "",
+            hair_type: "",
+            hair_health: "",
             uploaderIsVisible: false,
+            menuIsVisible: false
         };
     }
 
@@ -32,15 +36,7 @@ export default class App extends Component {
         axios
             .get("/profile.json")
             .then(({ data }) => {
-                this.setState({
-                    id: data.id,
-                    first: data.first_name,
-                    last: data.last_name,
-                    full_name: data.full_name,
-                    email: data.email,
-                    bio: data.bio,
-                    image: data.profile_pic,
-                });
+                this.setState({ ...data });
             })
             .catch((error) => {
                 console.log("error", error);
@@ -51,6 +47,12 @@ export default class App extends Component {
     toggleUploader() {
         this.setState({
             uploaderIsVisible: !this.state.uploaderIsVisible,
+        });
+    }
+
+    toggleMenu() {
+        this.setState({
+            menuIsVisible: !this.state.menuIsVisible,
         });
     }
 
@@ -76,7 +78,7 @@ export default class App extends Component {
             <BrowserRouter>
                 <>
                     <header className="main-header">
-                        <Link to="/">
+                        <Link to="/home">
                             <Logo />
                         </Link>
                         <nav>
@@ -97,15 +99,19 @@ export default class App extends Component {
                                     </Link>
                                 </li>
                                 <li>
-                                    <ProfilePic
-                                        id={this.state.id}
-                                        first={this.state.first}
-                                        last={this.state.last}
-                                        image={this.state.image}
-                                        toggleUploader={() =>
-                                            this.toggleUploader()
-                                        }
+                                    <Menu
+                                        toggleMenu={() => this.toggleMenu()}
                                     />
+                                </li>
+                                <li>
+                                    <Link to="/">
+                                        <ProfilePic
+                                            id={this.state.id}
+                                            first={this.state.first}
+                                            last={this.state.last}
+                                            image={this.state.image}
+                                        />
+                                    </Link>
                                 </li>
                             </ul>
                         </nav>
@@ -120,8 +126,10 @@ export default class App extends Component {
                                 first={this.state.first}
                                 last={this.state.last}
                                 image={this.state.image}
-                                toggleUploader={() => this.toggleUploader()}
                                 bio={this.state.bio}
+                                hair_type={this.state.hair_type}
+                                hair_health={this.state.hair_health}
+                                toggleUploader={() => this.toggleUploader()}
                                 setBio={(e) => this.setBio(e)}
                             />
                         )}
@@ -187,6 +195,12 @@ export default class App extends Component {
                         <Uploader
                             image={this.state.image}
                             setImage={(e) => this.setImage(e)}
+                            toggleUploader={() => this.toggleUploader()}
+                        />
+                    )}
+                    {this.state.menuIsVisible && (
+                        <Account
+                            toggleMenu={() => this.toggleMenu()}
                             toggleUploader={() => this.toggleUploader()}
                         />
                     )}

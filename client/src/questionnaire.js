@@ -37,8 +37,6 @@ export default function Questionnaire() {
         }
     };
     const handleSave = () => {
-        console.log('click', hairType, score);
-        // {hairType: hairType, hairHealth: hairHealth}
         axios
             .post("/questionnaire", {
                 hairType: hairType,

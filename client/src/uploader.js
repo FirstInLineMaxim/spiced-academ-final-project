@@ -75,27 +75,6 @@ export default class Uploader extends Component {
             });
     }
 
-    logout() {
-        axios.get('/logout')
-            .then(() => {
-                location.replace("/");
-            }).catch((error) => {
-                console.log('error in logout', error);
-            });
-    }
-
-    deleteAccout() {
-        console.log('deleteaccount');
-        axios
-            .post("/delete-account", this.state)
-            .then(() => {
-                location.replace("/");
-            })
-            .catch((error) => {
-                console.log("error in deleteaccount", error);
-            });
-    }
-
     render() {
         return (
             <div className="overlay">
@@ -132,17 +111,6 @@ export default class Uploader extends Component {
                                 Delete Image
                             </button>
                         )}
-                        <button
-                            className="deleteAcc"
-                            onClick={() =>
-                                window.confirm(
-                                    "Are your sure you wish to delete your account?"
-                                ) && this.deleteAccout()
-                            }
-                        >
-                            Delete account
-                        </button>
-                        <button onClick={() => this.logout()}>Logout</button>
                     </div>
                     <div
                         className="outer"

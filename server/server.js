@@ -74,11 +74,11 @@ app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 
 app.get("/home", (req, res) => {
-    // if (req.session.userId) {
-    //     res.redirect("/");
-    // } else {
+    if (req.session.userId) {
+        res.redirect("/");
+    } else {
         res.sendFile(path.join(__dirname, "..", "client", "index.html"));
-    // }
+    }
 });
 
 app.post("/home/registration", (req, res) => {
