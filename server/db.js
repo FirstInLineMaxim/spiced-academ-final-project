@@ -28,6 +28,16 @@ module.exports.addSurveyResults = (userId, hair_type, hair_health) => {
     return db.query(q, params);
 };
 
+module.exports.getSurveyResults = (hair_health) => {
+    const q = `
+        SELECT hair_health, explanation
+        FROM survey_results
+        WHERE hair_health=$1;
+    `;
+    const params = [hair_health];
+    return db.query(q, params);
+};
+
 /////////////////////////QUERY for login///////////////////////////
 module.exports.getUserInfo = (userEmail) => {
     const q = `

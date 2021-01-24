@@ -420,6 +420,23 @@ app.post("/questionnaire", (req, res) => {
         });
 });
 
+app.get("/questionnaire-results/:hairHealth", (req, res) => {
+    console.log("get request to /questionnaire-results", req.params);
+    const { hairHealth } = req.params;
+    if (hairHealth != 'undefined') {
+        db.getSurveyResults(hairHealth)
+            .then(({ rows }) => {
+                res.json(rows);
+            })
+            .catch((error) => {
+                console.log("error in addSurveyResults", error);
+                res.json({ error: true });
+            });
+    } else {
+        return;
+    }
+});
+
 //ALWAYS AT THE END BEFORE THE app.listen
 app.get("*", function (req, res) {
     if (!req.session.userId) {

@@ -18,7 +18,8 @@ export default function Profile(props) {
                 <BioEditor setBio={props.setBio} bio={props.bio} />
             </div>
             <div>
-                <ToDoList />
+                <ToDoList 
+                    hair_health={props.hair_health}/>
             </div>
         </div>
     );

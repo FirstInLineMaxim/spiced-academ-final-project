@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
 
-export default function ToDoList() {
+
+export default function ToDoList({ hair_health }) {
+    console.log(hair_health);
     const [todos, setTodos] = useState({
         "1st Week": [
             {
@@ -76,7 +79,11 @@ export default function ToDoList() {
         console.log(newTodos[week]);
         newTodos[week].splice(index, 1);
         setTodos(newTodos);
+
     };
+
+    useEffect(() => {        
+    }, [todos]);
 
     return (
         <div className="todo-container">
@@ -96,10 +103,12 @@ export default function ToDoList() {
                                     removeTodo={removeTodo}
                                 />
                             ))}
+                            {/* <TodoForm 
+                                addTodo={addTodo} 
+                            /> */}
                         </div>
                     );
                 })}
-                {/* <TodoForm addTodo={addTodo} /> */}
             </div>
         </div>
     );
@@ -114,7 +123,6 @@ function Todo({ todo, index, week, completeTodo, removeTodo }) {
             }}
         >
             {todo.text}
-            {index} {week}
             <div>
                 <button onClick={() => completeTodo(index, week)}>
                     Complete
