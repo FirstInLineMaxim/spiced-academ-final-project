@@ -12,6 +12,7 @@ export default class BioEditor extends Component {
         };
     }
 
+    
     handleChange(e) {
         this.setState(
             {

@@ -16,3 +16,5 @@ ALTER TABLE users ADD COLUMN bio VARCHAR;
 ALTER TABLE users ADD COLUMN hair_type VARCHAR;
 
 ALTER TABLE users ADD COLUMN hair_health VARCHAR;
+
+-- ALTER TABLE users TYPE COLUMN hair_health INT REFERENCES survey_results(id);

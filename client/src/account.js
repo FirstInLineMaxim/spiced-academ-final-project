@@ -1,8 +1,6 @@
 import axios from "./axios";
 
 export default function Account({ toggleMenu, toggleUploader }) {
-
-
     const logout = () => {
         axios
             .get("/logout")

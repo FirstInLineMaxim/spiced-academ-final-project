@@ -1,0 +1,130 @@
+{ "questionnaire": 
+    [
+        {
+            "questionText": "What is the natural curvature of your hair?",
+            "answerOptions": [
+                { "answerText": "Straight" },
+                { "answerText": "Wavy" },
+                { "answerText": "Curly" },
+                { "answerText": "Kinky" }
+            ]
+        },
+        {
+            "questionText": "What is the length?",
+            "answerOptions": [
+                {
+                    "answerText": "My hair is short (up to 3 fingers below chin)",
+                    "points": 0
+                },
+                {
+                    "answerText": "My hair is medium (up to 4 fingers below shoulder)",
+                    "points": 1
+                },
+                {
+                    "answerText": "My hair is long (from 4 fingers vbelow shoulder)",
+                    "points": 2
+                }
+            ]
+        },
+        {
+            "questionText": "What is the trickness?",
+            "answerOptions": [
+                {
+                    "answerText": "My hair is thin (they are usually fragile)",
+                    "points": 2
+                },
+
+                {
+                    "answerText": "My hair is average (not so fragile and malleable)",
+                    "points": 1
+                },
+                {
+                    "answerText": "My hair is thick (stiffer and strong hair)",
+                    "points": 0
+                }
+            ]
+        },
+        {
+            "questionText": "What is the oiliness?",
+            "answerOptions": [
+                {
+                    "answerText": "My hair is normal (soft and shine by nature, healthy looking and easy to comb)",
+                    "points": 0
+                },
+                {
+                    "answerText": "My hair is oily (excessive luster, thin, heavy wires without volume)",
+                    "points": 1
+                },
+                {
+                    "answerText": "My hair is dry (parched from root to tip, rough, brittle, dull, and dizzy)",
+                    "points": 3
+                },
+                {
+                    "answerText": "My hair is mixed (oily root with dry or normal ends, very common in long hair)",
+                    "points": 2
+                }
+            ]
+        },
+        {
+            "questionText": "In the last 6 months, did you do something that damaged your hair, such as dye, discoloration, lights, straightening, relations, progressive, etc?",
+            "answerOptions": [
+                { "answerText": "Yes, I did one or more procedures", "points": 1 },
+                { "answerText": "No, I didn't do any of that", "points": 0 }
+            ]
+        },
+        {
+            "questionText": "How many times a week do you use thermal appliances such as hair dryer or flat iron",
+            "answerOptions": [
+                { "answerText": "Never or less than once a week", "points": 0 },
+                { "answerText": "1 or 2 times a week", "points": 1 },
+                { "answerText": "3 or 4 times a week", "points": 2 },
+                { "answerText": "5 or more times a week", "points": 3 }
+            ]
+        },
+        {
+            "questionText": "Select all options that apply to the CURRENT state of your hair:",
+            "answerOptions": [
+                {
+                    "answerText": "Embarrassed when wet, armed, dull or with split ends",
+                    "points": 1
+                },
+                { "answerText": "Frizzy, dry, or scruffy", "points": 1 },
+                { "answerText": "it is thin (whin few wires)", "points": 1 },
+                { "answerText": "Two of this", "points": 2 },
+                { "answerText": "Thre of this", "points": 3 },
+                { "answerText": "None of this", "points": 0 }
+            ]
+        },
+        {
+            "questionText": "Take a strand of hair from the top of your head, wrap it around your fingers (like a floss) and pull until the hair breaks. What happens?",
+            "answerOptions": [
+                {
+                    "answerText": "Break by applying just a little force",
+                    "points": 1
+                },
+                {
+                    "answerText": "It looks strong and doesn't break easily",
+                    "points": 0
+                }
+            ]
+        },
+        {
+            "questionText": "Take another strand of hair and flick it quickly between your fingers, applying pressure, as if stretching a satin ribbon or pulling a thread to find its tip. Doing so will cause your hair to curl more than usual (if not, apply more pressure or pull harder). Then , stretch the wire a little force for a few seconds and release it. If it returns to its original shape, it is elastic, if it remains curled, it is rigid.",
+            "answerOptions": [
+                {
+                    "answerText": "Does not return to normal state, remaining coiled",
+                    "points": 1
+                },
+                { "answerText": "Returns to normal after test", "points": 0 }
+            ]
+        },
+        {
+            "questionText": "Take a glass or bowl of water and put a few strand of your hair over the water without sinking. Do no touch them for 3 minutes.",
+            "answerOptions": [
+                { "answerText": "Most of the hair floats", "points": 1 },
+                { "answerText": "The hair is + or - in the middle", "points": 0 },
+                { "answerText": "the hair hits the bottom", "points": 2 }
+            ]
+        }
+    ]
+}

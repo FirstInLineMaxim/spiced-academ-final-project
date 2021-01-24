@@ -1,5 +1,6 @@
 import BioEditor from "./bioEditor";
 import ProfilePic from "./profilepic";
+import ToDoList from "./todo";
 
 export default function Profile(props) {
     return (
@@ -15,6 +16,9 @@ export default function Profile(props) {
                     <span>{props.hair_health}</span>
                 </p>
                 <BioEditor setBio={props.setBio} bio={props.bio} />
+            </div>
+            <div>
+                <ToDoList />
             </div>
         </div>
     );

@@ -105,12 +105,16 @@ export default class App extends Component {
                                 </li>
                                 <li>
                                     <Link to="/">
-                                        <ProfilePic
-                                            id={this.state.id}
-                                            first={this.state.first}
-                                            last={this.state.last}
-                                            image={this.state.image}
-                                        />
+                                        <div className="img-wrapper">
+                                            <img
+                                                className="profile-img"
+                                                src={
+                                                    this.props.image ||
+                                                    "../default-img.png"
+                                                }
+                                                alt={this.props.full_name}
+                                            />
+                                        </div>
                                     </Link>
                                 </li>
                             </ul>
