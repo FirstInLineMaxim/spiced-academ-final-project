@@ -79,6 +79,6 @@ function tempRecomendation(temp) {
 
 //content from: https://afrocenchix.com/blogs/afrohair/how-to-care-for-your-afro-hair-this-summer
 //content from: https://www.theblacbox.co/blog/surviving-scandinavian-winter-the-afro-hair-edition
-
+//content from: https://www.who.int/news-room/q-a-detail/radiation-the-ultraviolet-(uv)-index
 
 export { uviRecomendation, tempRecomendation };

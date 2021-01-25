@@ -6,31 +6,6 @@ import { useState, useEffect } from "react";
 
 
 export default function Profile(props) {
-    // const [location, setLocation] = useState({lat: "", lon: ""});
-
-    // useEffect(() => {
-    //     (function getGeoLocation() {
-    //         if (navigator.geolocation) {
-    //             navigator.geolocation.getCurrentPosition(
-    //                 function (position) {
-    //                     var latitude = position.coords.latitude;
-    //                     var longitude = position.coords.longitude;
-    //                     setLocation({ lat: latitude, lon: longitude });
-    //                 },
-    //                 function error() {
-    //                     alert("Please enable your GPS position feature.");
-    //                 },
-    //                 { maximumAge: 10000, timeout: 5000, enableHighAccuracy: true }
-    //             );
-    //         }
-    //         else {
-    //             alert("Geolocation API is not supported in your browser.");
-    //             setLocation({ lat: "52.5563825", lon: "13.384439" });
-    //         }
-    //     })();
-        
-    // }, [props.id]);
-
     return (
         <div className="profile">
             <ProfilePic
@@ -48,10 +23,10 @@ export default function Profile(props) {
             <div>
                 <Weather />
             </div>
-            {/* <div>
+            <div>
                 <ToDoList 
                     hair_health={props.hair_health}/>
-            </div> */}
+            </div>
         </div>
     );
 }
