@@ -1,12 +1,10 @@
 import { Component } from "react";
 import axios from "./axios";
-import ProfilePic from "./profilepic";
 import Uploader from "./uploader";
 import Profile from './profile';
 import OtherProfile from "./otherPorfile";
 import Logo from "./logo";
 import FindPeople from "./findPeople";
-import Friends from './friends';
 import Chat from "./chat";
 import Questionnaire from "./questionnaire";
 import Menu from './menu';
@@ -27,6 +25,7 @@ export default class App extends Component {
             image: "",
             hair_type: "",
             hair_health: "",
+            todo: "",
             uploaderIsVisible: false,
             menuIsVisible: false
         };
@@ -89,11 +88,6 @@ export default class App extends Component {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/friends">
-                                        <FaUserFriends className="icon"></FaUserFriends>
-                                    </Link>
-                                </li>
-                                <li>
                                     <Link to="/chat">
                                         <FaComments className="icon"></FaComments>
                                     </Link>
@@ -133,6 +127,7 @@ export default class App extends Component {
                                 bio={this.state.bio}
                                 hair_type={this.state.hair_type}
                                 hair_health={this.state.hair_health}
+                                todo={this.state.todo}
                                 toggleUploader={() => this.toggleUploader()}
                                 setBio={(e) => this.setBio(e)}
                             />
@@ -154,17 +149,6 @@ export default class App extends Component {
                         path="/users"
                         render={(props) => (
                             <FindPeople
-                                match={props.match}
-                                key={props.match.url}
-                                history={props.history}
-                            />
-                        )}
-                    />
-
-                    <Route
-                        path="/friends"
-                        render={(props) => (
-                            <Friends
                                 match={props.match}
                                 key={props.match.url}
                                 history={props.history}

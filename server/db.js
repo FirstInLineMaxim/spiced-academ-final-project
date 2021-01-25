@@ -94,9 +94,11 @@ module.exports.editPassword = (email, password) => {
 /////////////////////////QUERY for upload picture/////////////////////////
 module.exports.getUserProfile = (userId) => {
     const q = `
-        SELECT id, first_name, last_name, CONCAT (first_name, ' ', last_name) AS full_name, bio, profile_pic, hair_health, hair_type
+        SELECT users.id, first_name, last_name, CONCAT (first_name, ' ', last_name) AS full_name, bio, profile_pic, users.hair_health, hair_type, todo
         FROM users
-        WHERE id = $1;
+        JOIN survey_results
+        ON users.hair_health = survey_results.hair_health
+        WHERE users.id = $1
         `;
     const params = [userId];
     return db.query(q, params);
@@ -146,64 +148,6 @@ module.exports.getMatchingPeople = (val) => {
     return db.query(q, params);
 };
 
-/////////////////////////QUERY for friendship ///////////////////////////
-module.exports.getFriendshipsStatus = (userId, otherUserId) => {
-    const q = `
-        SELECT * 
-        FROM friendships
-        WHERE (recipient_id = $1 AND sender_id = $2) 
-            OR (recipient_id = $2 AND sender_id = $1);
-        `;
-    const params = [userId, otherUserId];
-    return db.query(q, params);
-};
-
-module.exports.makeRequest = (userId, otherUserId) => {
-    const q = `
-        INSERT INTO friendships (sender_id, recipient_id)
-        VALUES ($1, $2)
-        RETURNING sender_id, recipient_id, accepted;
-        `;
-    const params = [userId, otherUserId];
-    return db.query(q, params);
-};
-
-module.exports.cancelRequest = (userId, otherUserId) => {
-    const q = `
-        DELETE
-        FROM friendships 
-        WHERE (recipient_id = $1 AND sender_id = $2) 
-            OR (recipient_id = $2 AND sender_id = $1);
-        `;
-    const params = [userId, otherUserId];
-    return db.query(q, params);
-};
-
-module.exports.acceptRequest = (userId, otherUserId) => {
-    const q = `
-        UPDATE friendships
-        SET accepted = 'true' 
-        WHERE (recipient_id = $1 AND sender_id = $2) 
-            OR (recipient_id = $2 AND sender_id = $1);
-        `;
-    const params = [userId, otherUserId];
-    return db.query(q, params);
-};
-
-/////////////////////////QUERY for friends ///////////////////////////
-module.exports.getFriendsWannabes = (userId) => {
-    const q = `
-        SELECT users.id, first_name, last_name, CONCAT (first_name, ' ', last_name) AS full_name, profile_pic, accepted
-        FROM friendships
-        JOIN users
-        ON (accepted = false AND recipient_id = $1 AND sender_id = users.id)
-        OR (accepted = true AND recipient_id = $1 AND sender_id = users.id)
-        OR (accepted = true AND sender_id = $1 AND recipient_id = users.id);
-        `;
-    const params = [userId];
-    return db.query(q, params);
-};
-
 /////////////////////////QUERY for chat ///////////////////////////
 module.exports.getMostRecentMessages = () => {
     const q = `
@@ -212,7 +156,7 @@ module.exports.getMostRecentMessages = () => {
         FROM chat_messages
         JOIN users
         ON chat_messages.user_id = users.id
-        ORDER BY chat_messages.create_at DESC
+        ORDER BY chat_messages.id DESC
         LIMIT 10;
         `;
     return db.query(q);
@@ -249,15 +193,6 @@ module.exports.deleteAccountUsers = (userId) => {
     return db.query(q, params);
 };
 
-module.exports.deleteAccountFriendships = (userId) => {
-    const q = `
-        DELETE
-        FROM friendships
-        WHERE (recipient_id = $1 OR sender_id = $1);
-        `;
-    const params = [userId];
-    return db.query(q, params);
-};
 
 module.exports.deleteAccountChat = (userId) => {
     const q = `

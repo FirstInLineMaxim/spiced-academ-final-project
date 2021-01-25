@@ -1,86 +1,27 @@
 import { useState, useEffect } from "react";
 
-export default function ToDoList({ hair_health }) {
-    console.log(hair_health);
-    const [todos, setTodos] = useState({
-        "1st Week": [
-            {
-                text: "Moisture",
-                isCompleted: false,
-            },
-            {
-                text: "Nutrition",
-                isCompleted: false,
-            },
-            {
-                text: "Reconstruction",
-                isCompleted: false,
-            },
-        ],
-        "2nd Week": [
-            {
-                text: "Nutrition",
-                isCompleted: false,
-            },
-            {
-                text: "Nutrition",
-                isCompleted: false,
-            },
-            {
-                text: "Reconstruction",
-                isCompleted: false,
-            },
-        ],
-        "3rd Week": [
-            {
-                text: "Nutrition",
-                isCompleted: false,
-            },
-            {
-                text: "Nutrition",
-                isCompleted: false,
-            },
-            {
-                text: "Reconstruction",
-                isCompleted: false,
-            },
-        ],
-        "4th Week": [
-            {
-                text: "Nutrition",
-                isCompleted: false,
-            },
-            {
-                text: "Nutrition",
-                isCompleted: false,
-            },
-            {
-                text: "Reconstruction",
-                isCompleted: false,
-            },
-        ],
-    });
-
-    // const addTodo = (text) => {
-    //     const newTodos = [...todos, { text }];
-    //     setTodos(newTodos);
-    // };
+export default function ToDoList({ hair_health, todo }) {
+    const [todos, setTodos] = useState(todo);
 
     const completeTodo = (index, week) => {
         const newTodos = {...todos};
         newTodos[week][index].isCompleted = !newTodos[week][index].isCompleted;
         setTodos(newTodos);
+        localStorage.setItem('todo-list', JSON.stringify(todos));
     };
 
-    const removeTodo = (index, week) => {
-        const newTodos = { ...todos };
-        console.log(newTodos[week]);
-        newTodos[week].splice(index, 1);
-        setTodos(newTodos);
-    };
+    useEffect(() => {
+        const localStorageList = localStorage.getItem("todo-list");
+        if (!localStorageList) {
+            return null;
+        } else {
+            setTodos(JSON.parse(localStorageList));
+        }
+    }, []);
 
-    useEffect(() => {        
-    }, [todos]);
+    const clearTodo = () => {
+        localStorage.clear();
+    };
 
     return (
         <div className="todo-container">
@@ -97,21 +38,18 @@ export default function ToDoList({ hair_health }) {
                                     todo={todo}
                                     week={week}
                                     completeTodo={completeTodo}
-                                    removeTodo={removeTodo}
                                 />
                             ))}
-                            {/* <TodoForm 
-                                addTodo={addTodo} 
-                            /> */}
                         </div>
                     );
                 })}
             </div>
+            <button onClick={clearTodo}>Clear all</button>
         </div>
     );
 }
 
-function Todo({ todo, index, week, completeTodo, removeTodo }) {
+function Todo({ todo, index, week, completeTodo }) {
     return (
         <div
             className="todo"
@@ -124,33 +62,8 @@ function Todo({ todo, index, week, completeTodo, removeTodo }) {
                 <button onClick={() => completeTodo(index, week)}>
                     Complete
                 </button>
-                <button onClick={() => removeTodo(index, week)}>X</button>
             </div>
         </div>
     );
 }
 
-// function TodoForm({ addTodo }) {
-//     const [value, setValue] = useState('');
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//         if (!value) {
-//             return;
-//         } else {
-//             addTodo(value);
-//             setValue('');
-//         }
-//     };
-
-//     return (
-//         <form onSubmit={handleSubmit}>
-//             <input
-//                 type='text'
-//                 className='input'
-//                 value={value}
-//                 onChange={(e) => setValue(e.target.value)}
-//             />
-//         </form>
-//     );
-// }

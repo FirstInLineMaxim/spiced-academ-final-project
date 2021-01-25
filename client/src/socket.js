@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import { postMessage, addRecentMessages, newFriendRequest } from "./actions";
+import { postMessage, addRecentMessages } from "./redux/actions";
 
 export let socket;
 

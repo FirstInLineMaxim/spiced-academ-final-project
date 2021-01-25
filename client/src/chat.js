@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { socket } from './socket';
 import { useEffect, useState } from "react";
 import { FaArrowCircleUp, FaTrashAlt} from "react-icons/fa";
-import {  deleteMessage } from "./actions";
+import {  deleteMessage } from "./redux/actions";
 
 export default function Chat(props) {
     const dispatch = useDispatch();

@@ -202,6 +202,7 @@ app.post("/home/reset-password/verify", (req, res) => {
 app.get('/profile.json', (req, res) => {
     db.getUserProfile(req.session.userId)
         .then(({ rows }) => {
+            console.log('rows', rows[0]);
             res.json(rows[0]);
         }).catch((error) => {
             console.log("error in /profile route - getUserProfile", error);
@@ -210,7 +211,6 @@ app.get('/profile.json', (req, res) => {
 });
 
 app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
-    console.log(req);
     if (req.file) {
         const url = `${s3Url}${req.session.userId}/${req.file.filename}`;
         console.log('url', url);
@@ -309,58 +309,6 @@ app.get("/find-users/:query", (req, res) => {
         });
 });
 
-app.get("/friendship-status/:otherUserId", (req, res) => {
-    const { otherUserId } = req.params;
-    db.getFriendshipsStatus(req.session.userId, otherUserId)
-        .then(({ rows }) => {
-            res.json(rows);
-        }).catch((error) => {
-            console.log("/getFriendshipsStatus ", error);
-            res.json({ error: true });
-        });
-});
-
-app.post("/friendship-action", (req, res) => {
-    const { action, otherUserId } = req.body;
-    if (action === "Make friend request") {
-        db.makeRequest(req.session.userId, otherUserId)
-            .then(({ rows }) => {
-                res.json(rows);
-            })
-            .catch((error) => {
-                console.log("error in makeRequest", error);
-                res.json({ error: true });
-            });
-    } else if (action === "Cancel friend request" || action === "Unfriend") {
-        db.cancelRequest(req.session.userId, otherUserId)
-            .then(({ rows }) => {
-                res.json(rows);
-            })
-            .catch((error) => {
-                console.log("error in cancelRequest", error);
-                res.json({ error: true });
-            });
-    } else if (action === "Accept friend request") {
-        db.acceptRequest(req.session.userId, otherUserId)
-            .then(({ rows }) => {
-                res.json(rows);
-            })
-            .catch((error) => {
-                console.log("error in acceptRequest", error);
-                res.json({ error: true });
-            });
-    }
-});
-
-app.get("/friends-wannabes", (req, res) => {
-    db.getFriendsWannabes(req.session.userId)
-        .then(({rows}) => {
-            res.json(rows);
-        }).catch((error) => {
-            console.log("/getFriendsWannabes ", error);
-            res.json({ error: true });
-        });
-});
 
 app.get('/logout', (req, res) => {
     req.session.userId = null;
@@ -379,6 +327,7 @@ app.post("/delete-account", (req, res) => {
                             console.log("next3");
                             req.session.userId = null;
                             res.redirect("/home");
+                            localStorage.clear();
                         })
                         .catch((error) => {
                             console.log("error deleteAccountUsers", error);

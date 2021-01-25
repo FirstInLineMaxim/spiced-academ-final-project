@@ -1,14 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Comfortaa:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 /* COLOR PALLETE VARIABLES */
-
+:root {
+  --main-bc-color: #fff;
+  --primary-color: #fe7bdb;
+  --secondary-color: #95e5fe;
+  --third-color: #8dffe8;
+  --fourth-color: #fbfe4b;
+  --font-color: #2a293e;
+  --main-font-style: 'Comfortaa';
+  --title-font-style: 'Cinzel';
+}
 
 /* GENERAL STYLE */
 body {
   box-sizing: border-box;
-  font-family: "Comfortaa";
+  font-family: var(--main-font-style);
   color: #2a293e;
-  background-color: ghostwhite;
+  background-color: var(--main-bc-color);
 }
 
 main {
@@ -19,6 +27,7 @@ main {
 
 p {
   font-size: calc(0.6rem + 1vmin);
+  font-family: var(--main-font-style);
 }
 
 svg {
@@ -140,12 +149,11 @@ ul {
   cursor: default;
 }
 
-.profile .profile-img:hover,
-.findPeople .profile-img:hover {
+.profile .profile-img:hover {
   box-shadow: none;
 } 
 
-.profile .img-wrapper, .findPeople .img-wrapper {
+.profile .img-wrapper {
   position: relative;
   border-radius: 50%;
   width: 200px;
@@ -153,14 +161,12 @@ ul {
   transition: 1s box-shadow;
   background-color: ghostwhite;
 }
-.profile .img-wrapper:hover, .findPeople .img-wrapper:hover {
+.profile .img-wrapper:hover {
   box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
 }
 
 .profile .img-wrapper:hover::before, 
-.profile .img-wrapper:hover::after, 
-.findPeople .img-wrapper:hover::before, 
-.findPeople .img-wrapper:hover::after {
+.profile .img-wrapper:hover::after  {
   display: block;
   content: '';
   position: absolute;
@@ -173,8 +179,7 @@ ul {
   animation: 2s clockwise infinite;
 }
 
-.profile .img-wrapper:hover:after,
-.findPeople .img-wrapper:hover::after {
+.profile .img-wrapper:hover:after {
   background: rgba(184, 242, 230, .8);
   animation: 4s counterclockwise infinite;
 }
@@ -341,58 +346,6 @@ ul {
 .findedPeople {
   display: flex;
   flex-direction: row;
-}
-
-/* FRIENDS */
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
-.sub-container {
-  display: flex;
-  flex-wrap: wrap;
-	justify-content: flex-start;
-	align-items: center;
-  line-height: 1.4;
-  height: 100%;
-}
-
-.card {
-  width: 150px;
-  height: 300px;
-	border-radius: 10px;
-	text-align: center;
-  padding: 30px 30px;
-  margin: 1vh 1vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.sub-container img {
-	height: 150px;
-	width: 150px;
-	border-radius: 50%;
-	margin: auto auto 15px;
-  display: block;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center right;
-  cursor: pointer;
-}
-
-.sub-container h2 {
-  margin: auto;
-	font-weight: 400;
-	font-size: calc(1rem + 1vmin);
-  font-family: 'Playfair Display', serif;
-}
-
-.card button {
-  width: 120px;
-  height: 40px;
-  font-size: calc(.5rem + 1vmin);
 }
 
 /* CHAT  */
@@ -574,7 +527,7 @@ button {
 }
 
 
-.log-in, .sig-up, .close, .edit, .friendship, .deleteAcc {
+.log-in, .sig-up, .close, .edit, .deleteAcc {
   background: #B8F2E6;
 }
 

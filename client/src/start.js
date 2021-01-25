@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reduxPromise from "redux-promise";
 import { composeWithDevTools } from "redux-devtools-extension";
-import reducer from "./reducer";
+import reducer from "./redux/reducer";
 import Welcome from "./welcome";
 import App from "./app";
 import { init } from "./socket";

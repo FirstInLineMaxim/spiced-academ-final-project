@@ -11,7 +11,6 @@ export default function FindPeople() {
     const [showScroll, setShowScroll] = useState(false);
 
     useEffect(() => {
-        console.log(`Console log happening in useEffect`);
         let abort;
         
         (async () => {
@@ -19,19 +18,16 @@ export default function FindPeople() {
                 const { data } = await axios.get("/latest-users");
                 if (!abort) {
                     setUsers(data);
-                    console.log("data in find people", data);
                 }
             } else {
                 const { data } = await axios.get("/find-users/" + query);
                 if (!abort) {
                     setUsers(data);
-                    console.log("data in find people", data);
                 }
             }
         })();
 
         return () => {
-            console.log(`About to replace ${query} with`);
             abort = true;
         };
     }, [query]);

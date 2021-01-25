@@ -52,7 +52,6 @@ export default function Weather() {
             <img
                 src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`}
             />
-            {/* <p>{weather.current.weather[0].icon}.png</p> */}
             <p>{weather.current.weather[0].description.capitalize()}</p>
             <p>Humidity: {weather.current.humidity}%</p>
             <p>UV-Index: {weather.current.uvi}</p>

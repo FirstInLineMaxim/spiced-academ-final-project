@@ -47,6 +47,7 @@ export default function Questionnaire() {
             .then(() => {
                 console.log("post request made");
                 location.replace("/");
+                localStorage.clear();
             })
             .catch((error) => {
                 console.log("error", error);
