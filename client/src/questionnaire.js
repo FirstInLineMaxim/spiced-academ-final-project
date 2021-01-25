@@ -1,6 +1,6 @@
 import axios from "./axios";
 import { useState, useEffect } from "react";
-const { questionnaire } = require('./survey.json');
+const { questionnaire } = require('./helpers/survey.json');
 
 export default function Questionnaire() {
     const [hairType, setHairType] = useState();

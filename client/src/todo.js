@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
-
 
 export default function ToDoList({ hair_health }) {
     console.log(hair_health);
@@ -47,7 +45,7 @@ export default function ToDoList({ hair_health }) {
                 isCompleted: false,
             },
         ],
-        '4th Week': [
+        "4th Week": [
             {
                 text: "Nutrition",
                 isCompleted: false,
@@ -79,7 +77,6 @@ export default function ToDoList({ hair_health }) {
         console.log(newTodos[week]);
         newTodos[week].splice(index, 1);
         setTodos(newTodos);
-
     };
 
     useEffect(() => {        
