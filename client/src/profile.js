@@ -6,11 +6,7 @@ import { useState, useEffect } from "react";
 
 
 export default function Profile(props) {
-    const [uvi, setUvi] = useState('null');
-    const [temp, setTemp] = useState("null");
-    console.log('uvi' , uvi);
-    
-
+    console.log(props)
     return (
         <div className="profile">
             <ProfilePic
@@ -30,7 +26,6 @@ export default function Profile(props) {
             </div>
             <div>
                 <ToDoList 
-                    hair_health={props.hair_health}
                     todo={props.todo}/>
             </div>
         </div>

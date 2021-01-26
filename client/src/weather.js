@@ -2,41 +2,49 @@ import axios from "./axios";
 import { useState, useEffect } from "react";
 const { API_key } = require("../../server/secrets.json");
 
-
 export default function Weather() {
     const [weather, setWeather] = useState(null);
 
     useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(async (position) => {
-                if(!position) {
-                    console.log("positiion if", position);
+        navigator.permissions.query({ name: "geolocation" }).
+            then(({state}) => {
+                if (state == "granted") {
+                    console.log(state);
+                    navigator.geolocation.getCurrentPosition(async (position) => {
+                        let { latitude, longitude } = position.coords;
+                        const { data } = await axios.get(
+                            `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=minutely,hourly,daily,alerts&appid=${API_key}`
+                        );
+                        setWeather(data);
+                    });
+                } else {
+                    console.log(state);
                     let location = {
                         lat: "52.5563825",
                         lon: "13.384439",
                     };
                     alert(
-                        "Geolocation API is not supported in your browser. Getting weather to the website location."
+                        "Geolocation API is not supported in your browser. Getting weather from the website location, which is Berlin."
                     );
-                    const { data } = await axios.get(
+                    axios.get(
                         `https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&units=metric&exclude=minutely,hourly,daily,alerts&appid=${API_key}`
-                    );
-                    setWeather(data);
-                } else {
-                    console.log("positiion else", position);
-                    let { latitude, longitude } = position.coords;
-                    const { data } = await axios.get(
-                        `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=minutely,hourly,daily,alerts&appid=${API_key}`
-                    );
-                    setWeather(data);
+                    ).then(({ data }) => {
+                        setWeather(data);
+                    });
+                    
                 }
             });
-        } else {
-            console.log('else');
-            alert(
-                "Geolocation API is not supported in your browser. Getting weather to the website location."
-            );
-        }
+        // if (navigator.geolocation) {
+        //     navigator.geolocation.getCurrentPosition(async (position) => {
+        //         if(!position) {
+        //             console.log("position if", position);
+        //             let { latitude, longitude } = position.coords;
+        //             const { data } = await axios.get(
+        //                 `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=minutely,hourly,daily,alerts&appid=${API_key}`
+        //             );
+        //             setWeather(data);
+        //         }
+        // }
     }, []);
 
     if (!weather) {

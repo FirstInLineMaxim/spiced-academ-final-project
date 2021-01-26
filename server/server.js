@@ -202,7 +202,6 @@ app.post("/home/reset-password/verify", (req, res) => {
 app.get('/profile.json', (req, res) => {
     db.getUserProfile(req.session.userId)
         .then(({ rows }) => {
-            console.log('rows', rows[0]);
             res.json(rows[0]);
         }).catch((error) => {
             console.log("error in /profile route - getUserProfile", error);

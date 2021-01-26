@@ -11,7 +11,7 @@ import Menu from './menu';
 import Account from "./account";
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import { FaSearch, FaUserFriends, FaComments } from "react-icons/fa";
+import { FaSearch, FaComments } from "react-icons/fa";
 
 export default class App extends Component {
     constructor() {
