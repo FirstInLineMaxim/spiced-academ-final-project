@@ -6,6 +6,14 @@ import { useState, useEffect } from "react";
 
 
 export default function Profile(props) {
+    const [reload, setReload] = useState(false);
+
+    useEffect(() => {
+        console.log("reload", reload);
+        setReload(false);
+        
+    }, [reload]);
+    
     return (
         <div className="profile">
             <ProfilePic
@@ -24,7 +32,10 @@ export default function Profile(props) {
                 <Weather />
             </div>
             <div>
-                <ToDoList todo={props.todo} />
+                <ToDoList
+                    props={props.history}
+                    on={setReload}
+                    todo={props.todo} />
             </div>
         </div>
     );

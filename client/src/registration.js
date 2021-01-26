@@ -46,7 +46,7 @@ export default class Registration extends Component {
         return (
             <div className="formField">
                 <div className="form">
-                    <header>
+                    <div>
                         <h2>Registration</h2>
                         <p>
                             join millions of cool peolple sharing their experiences
@@ -58,7 +58,7 @@ export default class Registration extends Component {
                                 </span>
                             </p>
                         )}
-                    </header>
+                    </div>
 
                     <input
                         onChange={(e) => this.handleChange(e)}

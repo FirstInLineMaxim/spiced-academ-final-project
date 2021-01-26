@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;700&display=swap');
+
+$font-stack: 'Comfortaa', sans-serif;
+$font-title: 'Space Grotesk', serif;
+$font-color: #2a293e;
+$bcg-color: #fff;
+$primary-color: rgb(254, 123, 219);
+$secundary-color: #95e5fe;
+$third-color: #8dffe8;
+$fourth-color: #fbfe4b;
+
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    font: 100% $font-stack;
+    background-color: $bcg-color;
+    color: $font-color;
+    font-size: 1rem;
+    h1 {
+        font-family: $font-title;
+        margin-left: 1vw;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 1.5vw 3vw;
+    height: 8vh;
+    background-color: $bcg-color;
+    box-shadow: 0 8px 6px -6px $font-color;
+    z-index: 10;
+    
+}
+
+nav {
+    margin-left: auto;
+    li {
+        position: relative;
+        display: inline-block;
+        list-style-type: none;
+        padding: 0 1rem;
+    }
+    ul {
+        display: flex;
+        align-items: center;
+        li:nth-child(odd) {
+            p {
+                background: linear-gradient(180deg, $bcg-color 70%, $primary-color 30%);
+            }
+            p:hover {
+                background: linear-gradient(180deg, $bcg-color 40%, $primary-color 60%);
+            }
+        }
+        li:nth-child(even) {
+            p {
+            background: linear-gradient(180deg, $bcg-color 70%, $third-color 30%);
+            }
+            p:hover {
+            background: linear-gradient(180deg, $bcg-color 40%, $third-color 60%);
+            }
+        }
+    }
+
+}
+
+footer {
+    margin: 0;
+    width: 100%;
+    padding: 1vh 1vw;
+}
+
+a {
+    text-decoration: none;
+    color: $font-color;
+}
+
+.logo {
+    width: 3em;
+    height: 3em;
+}
+
+.home-page {
+    display: flex;
+    flex-direction: column;
+    margin: 1vw 1vh;
+    .grid {
+        display: grid;
+        grid-template: repeat(2, [row] 1fr) / repeat(4, [col] 1fr);
+        // grid-gap: 1.5vw;
+        margin: 0 5vw;
+        min-height: 100vh;
+        .item-1,
+        .item-2 {
+        align-items: center;
+        line-height: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        }
+        .item-1 {
+        grid-column: col 1 / span 3;
+        grid-row: row 1 / span 2;
+        z-index: 2;
+        h2 {
+            color: $third-color;
+        }
+        }
+        .item-2 {
+        grid-column: col 3 / span 4;
+        grid-row: row 1 / span 2;
+        z-index: 1;
+        background-color: $primary-color;
+        }
+        .bottom-2 {
+            background-color: $secundary-color;
+        }
+        .bottom-1 {
+            h2 {
+            color: $primary-color;
+        }
+        
+        }
+    }
+    img {
+        width: 15rem;
+        height: auto;
+        margin: 0 auto;
+    }
+    h2 {
+        font-family: $font-title;
+        text-transform: uppercase;
+        h2:nth
+    }
+}

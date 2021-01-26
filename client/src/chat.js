@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { socket } from './socket';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaArrowCircleUp, FaTrashAlt} from "react-icons/fa";
 import {  deleteMessage } from "./redux/actions";
 
@@ -41,12 +41,10 @@ export default function Chat(props) {
         <>
             <h1>Welcome to chatroom</h1>
             <div id="chat-container">
-                <div className='messages-container'>
+                <div className="messages-container">
                     {chatMessages &&
                         chatMessages.map((msg) => (
-                            <div 
-                                key={msg.id} 
-                                className="message-container">
+                            <div key={msg.id} className="message-container">
                                 <img
                                     className="profile-img"
                                     src={
@@ -61,12 +59,10 @@ export default function Chat(props) {
                                         {msg["create_at"]}
                                     </span>
                                 </p>
-                                <p>
-                                    {msg.message}
-                                </p>
+                                <p>{msg.message}</p>
                                 {msg.user_id == props.loggedId && (
                                     <FaTrashAlt
-                                        className='deleteMsg'
+                                        className="deleteMsg"
                                         onClick={() =>
                                             dispatch(deleteMessage(msg.id))
                                         }
@@ -75,7 +71,10 @@ export default function Chat(props) {
                             </div>
                         ))}
                 </div>
-                <textarea onKeyDown={handleKeyDown} />
+                <textarea
+                    placeholder="Add your message here"
+                    onKeyDown={handleKeyDown}
+                />
                 <FaArrowCircleUp
                     className="scrollTop"
                     onClick={scrollTop}

@@ -14,8 +14,6 @@ export default class OtherProfile extends Component {
         };
     }
     
-
-
     componentDidMount() {
         axios.get("/member/" + this.props.match.params.id)
             .then(({ data }) => {

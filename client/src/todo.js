@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 export default function ToDoList({ todo }) {
     const [todos, setTodos] = useState(todo);
 
-    const completeTodo = (index, week) => {        
-        const newTodos = {...todos};
+    const completeTodo = (index, week) => {
+        const newTodos = { ...todos };
         newTodos[week][index].isCompleted = !newTodos[week][index].isCompleted;
         setTodos(newTodos);
-        localStorage.setItem('todo-list', JSON.stringify(todos));
+        localStorage.setItem("todo-list", JSON.stringify(todos));
     };
 
     useEffect(() => {

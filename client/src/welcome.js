@@ -9,12 +9,12 @@ export default function Welcome() {
     return (
         <>
             <HashRouter>
-                <div className="home">
+                <>
                     <Route exact path="/" component={Home} />
                     <Route path="/registration" component={Registration} />
                     <Route path="/login" component={Login} />
                     <Route path="/reset-password" component={ResetPassword} />
-                </div>
+                </>
             </HashRouter>
         </>
     );
