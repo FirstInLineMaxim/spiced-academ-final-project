@@ -9,11 +9,12 @@ export default class OtherProfile extends Component {
             full_name: "",
             email: "",
             bio: "",
-            image: "",
-            userId: ""
-
+            profile_pic: "",
+            userId: "",
         };
     }
+    
+
 
     componentDidMount() {
         axios.get("/member/" + this.props.match.params.id)
@@ -26,7 +27,7 @@ export default class OtherProfile extends Component {
                         full_name: data.full_name,
                         email: data.email,
                         bio: data.bio,
-                        image: data.profile_pic,
+                        profile_pic: data.profile_pic,
                         userId: data.loggedId,
                     });
                 }
@@ -43,7 +44,7 @@ export default class OtherProfile extends Component {
                 <div className="img-wrapper">
                     <img
                         className="profile-img"
-                        src={this.state.image || "../default-img.png"}
+                        src={this.state.profile_pic || "../default-img.png"}
                         alt={`${this.state.first} ${this.state.last}`}
                     />
                 </div>

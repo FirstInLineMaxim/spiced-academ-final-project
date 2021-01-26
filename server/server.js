@@ -271,7 +271,7 @@ app.post("/delete-profile-pic", s3.delete, (req, res) => {
 
 app.get("/member/:id", (req, res) => {
     const { id } = req.params;
-    db.getUserProfile(id)
+    db.getOtherUserProfile(id)
         .then(({ rows }) => {
             if (rows.length > 0) {
                 rows[0]["loggedId"] = req.session.userId;

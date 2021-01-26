@@ -1,11 +1,11 @@
-export default function ProfilePic({ first, last, image, toggleUploader }) {
+export default function ProfilePic({ first, last, profile_pic, toggleUploader }) {
     return (
         <>
             <div className="img-wrapper">
                 <img
                     onClick={() => toggleUploader()}
                     className="profile-img"
-                    src={image || "../default-img.png"}
+                    src={profile_pic || "../default-img.png"}
                     alt={`${first} ${last}`}
                 />
             </div>

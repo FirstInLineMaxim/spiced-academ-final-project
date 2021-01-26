@@ -115,6 +115,16 @@ module.exports.editProfilePic = (userId, url) => {
     return db.query(q, params);
 };
 
+module.exports.getOtherUserProfile = (userId) => {
+    const q = `
+        SELECT id, first_name, last_name, CONCAT (first_name, ' ', last_name) AS full_name, email, bio, profile_pic
+        FROM users
+        WHERE id = $1;
+        `;
+    const params = [userId];
+    return db.query(q, params);
+};
+
 /////////////////////////QUERY for edit/delete bio///////////////////////////
 module.exports.editBio = (userId, bio) => {
     const q = `

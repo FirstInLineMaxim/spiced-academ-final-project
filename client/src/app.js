@@ -2,6 +2,7 @@ import { Component } from "react";
 import axios from "./axios";
 import Uploader from "./uploader";
 import Profile from './profile';
+import ProfilePic from "./profilepic";
 import OtherProfile from "./otherPorfile";
 import Logo from "./logo";
 import FindPeople from "./findPeople";
@@ -22,7 +23,7 @@ export default class App extends Component {
             last: "",
             full_name: "",
             bio: "",
-            image: "",
+            profile_pic: "",
             hair_type: "",
             hair_health: "",
             todo: "",
@@ -57,7 +58,7 @@ export default class App extends Component {
 
     setImage(newProfilePic) {
         this.setState({
-            image: newProfilePic,
+            profile_pic: newProfilePic,
         });
     }
 
@@ -98,17 +99,19 @@ export default class App extends Component {
                                     />
                                 </li>
                                 <li>
+                                    {/* <Link to="/">
+                                        <ProfilePic
+                                            id={this.state.id}
+                                            first={this.state.first}
+                                            last={this.state.last}
+                                            profile_pic={this.state.profile_pic}
+                                        />
+                                    </Link> */}
                                     <Link to="/">
-                                        <div className="img-wrapper">
-                                            <img
-                                                className="profile-img"
-                                                src={
-                                                    this.props.image ||
-                                                    "../default-img.png"
-                                                }
-                                                alt={this.props.full_name}
-                                            />
-                                        </div>
+                                        <img
+                                            className="profile-img"
+                                            src={this.state.profile_pic}
+                                        />
                                     </Link>
                                 </li>
                             </ul>
@@ -123,7 +126,7 @@ export default class App extends Component {
                                 full_name={this.state.full_name}
                                 first={this.state.first}
                                 last={this.state.last}
-                                image={this.state.image}
+                                profile_pic={this.state.profile_pic}
                                 bio={this.state.bio}
                                 hair_type={this.state.hair_type}
                                 hair_health={this.state.hair_health}
@@ -181,7 +184,7 @@ export default class App extends Component {
 
                     {this.state.uploaderIsVisible && (
                         <Uploader
-                            image={this.state.image}
+                            profile_pic={this.state.profile_pic}
                             setImage={(e) => this.setImage(e)}
                             toggleUploader={() => this.toggleUploader()}
                         />

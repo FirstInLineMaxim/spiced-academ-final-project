@@ -5,7 +5,7 @@ export default class Uploader extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: this.props.image,
+            profile_pic: this.props.profile_pic,
             uploading: "",
             hidden: "",
             error: false,
@@ -15,7 +15,7 @@ export default class Uploader extends Component {
     handleChange(e) {
         this.setState(
             {
-                image: e.target.files[0],
+                profile_pic: e.target.files[0],
             },
             () => console.log("this.state in handleChange: ", e.target.files[0])
         );
@@ -28,7 +28,7 @@ export default class Uploader extends Component {
             hidden: "hidden",
         });
         var formData = new FormData();
-        formData.append("image", this.state.image);
+        formData.append("profile_pic", this.state.profile_pic);
         axios
             .post("/upload", formData)
             .then(({ data }) => {
@@ -83,14 +83,14 @@ export default class Uploader extends Component {
                         <h2>Profile</h2>
                         {this.state.error && (
                             <p className="errorMessage">
-                                Something went wrong. Please try again 
+                                Something went wrong. Please try again
                             </p>
                         )}
                     </header>
                     <div className="form">
                         <input
                             onChange={(e) => this.handleChange(e)}
-                            name="image"
+                            name="profile_pic"
                             placeholder="Profile Picture"
                             type="file"
                             accept="image/*"
@@ -103,7 +103,7 @@ export default class Uploader extends Component {
                             <span className={this.state.uploading}></span>
                             <span className={this.state.hidden}>Update</span>
                         </button>
-                        {this.props.image && (
+                        {this.props.profile_pic && (
                             <button
                                 className="delete"
                                 onClick={(e) => this.handleDeleteImage(e)}
