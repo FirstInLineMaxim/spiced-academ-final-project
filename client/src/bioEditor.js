@@ -80,11 +80,8 @@ export default class BioEditor extends Component {
                             />
                         )}
                         {!this.props.bio && !this.state.textareaVisible && (
-                            <p
-                                className="add-bio"
-                                onClick={() => this.toggleTextarea()}
-                            >
-                                <span className="highlight">
+                            <p onClick={() => this.toggleTextarea()}>
+                                <span className="add-bio">
                                     Add your bio now
                                 </span>
                             </p>
@@ -93,23 +90,17 @@ export default class BioEditor extends Component {
                         {this.props.bio && !this.state.textareaVisible && (
                             <p>{this.props.bio}</p>
                         )}
-                        
+
                         {this.props.bio && !this.state.textareaVisible && (
-                            <button
-                                className="edit"
-                                onClick={() => this.toggleTextarea()}
-                            >
-                                Edit bio
-                            </button>
+                            <p onClick={() => this.toggleTextarea()}>
+                                <span className="edit">Edit bio</span>
+                            </p>
                         )}
 
                         {this.props.bio && !this.state.textareaVisible && (
-                            <button
-                                className="delete"
-                                onClick={(e) => this.deleteBio(e)}
-                            >
-                                Delete Bio
-                            </button>
+                            <p onClick={(e) => this.deleteBio(e)}>
+                                <span className="delete">Delete Bio</span>
+                            </p>
                         )}
 
                         {this.state.textareaVisible && (
@@ -123,18 +114,19 @@ export default class BioEditor extends Component {
                 {this.state.textareaVisible && (
                     <div className="overlay">
                         <div className="bio-edit formField">
-                            <header>
+                            <div className="header">
                                 <h2>Edit your Bio</h2>
                                 {this.state.error && (
                                     <p className="errorMessage">
                                         Something went wrong. Please try again
                                     </p>
                                 )}
-                            </header>
+                            </div>
                             <div className="form">
                                 {this.state.textareaVisible && (
                                     <textarea
                                         name="draftBio"
+                                        placeholder="Add your bio here"
                                         onChange={(e) => this.handleChange(e)}
                                         defaultValue={this.props.bio}
                                     />

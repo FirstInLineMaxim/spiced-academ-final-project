@@ -24,8 +24,8 @@ export default function ToDoList({ todo }) {
     };
 
     return (
-        <div className="todo-container">
-            <h1>TODO</h1>
+        <>
+            <h2 className='green'>TODO</h2>
             <div className="todo-list">
                 {Object.keys(todos).map((week, idx) => {
                     return (
@@ -45,7 +45,7 @@ export default function ToDoList({ todo }) {
                 })}
             </div>
             <button onClick={clearTodo}>Clear all</button>
-        </div>
+        </>
     );
 }
 

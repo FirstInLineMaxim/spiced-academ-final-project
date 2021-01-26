@@ -79,14 +79,14 @@ export default class Uploader extends Component {
         return (
             <div className="overlay">
                 <div className="uploadModal formField">
-                    <header>
+                    <div className="header">
                         <h2>Profile</h2>
                         {this.state.error && (
                             <p className="errorMessage">
                                 Something went wrong. Please try again
                             </p>
                         )}
-                    </header>
+                    </div>
                     <div className="form">
                         <input
                             onChange={(e) => this.handleChange(e)}

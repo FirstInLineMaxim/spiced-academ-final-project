@@ -40,7 +40,7 @@ export default class Login extends Component {
     render() {
         return (
             <div className="formField">
-                <header>
+                <div className="header">
                     <h2>Login</h2>
                     <p>login here using your email and password</p>
                     {this.state.error && (
@@ -48,7 +48,7 @@ export default class Login extends Component {
                             Something went wrong. Please try again
                         </p>
                     )}
-                </header>
+                </div>
                 <div className="form">
                     <input
                         onChange={(e) => this.handleChange(e)}
@@ -73,7 +73,7 @@ export default class Login extends Component {
                 </Link>
                 <Link to="/reset-password">
                     <button className="frgt-pass submits">
-                        Forgot Password?
+                        New Password?
                     </button>
                 </Link>
             </div>

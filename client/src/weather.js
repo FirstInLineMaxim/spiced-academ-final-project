@@ -34,17 +34,6 @@ export default function Weather() {
                     
                 }
             });
-        // if (navigator.geolocation) {
-        //     navigator.geolocation.getCurrentPosition(async (position) => {
-        //         if(!position) {
-        //             console.log("position if", position);
-        //             let { latitude, longitude } = position.coords;
-        //             const { data } = await axios.get(
-        //                 `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=minutely,hourly,daily,alerts&appid=${API_key}`
-        //             );
-        //             setWeather(data);
-        //         }
-        // }
     }, []);
 
     if (!weather) {
@@ -52,18 +41,24 @@ export default function Weather() {
     }
     
     return (
-        <div>
-            <h1>Weather </h1>
-            <p>{weather.timezone}</p>
-            <p>Temperature: {Math.round(weather.current.temp)}° C</p>
-            <p>Feels like: {Math.round(weather.current.feels_like)}° C</p>
-            <img
-                src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`}
-            />
-            <p>{weather.current.weather[0].description.capitalize()}</p>
-            <p>Humidity: {weather.current.humidity}%</p>
-            <p>UV-Index: {weather.current.uvi}</p>
-        </div>
+        <>
+            <h2 className="blue">Weather</h2>
+            <p className="location"> {weather.timezone}</p>
+            <div className="temp">
+                <p>Temperature: {Math.round(weather.current.temp)}° C</p>
+                <p>Feels like: {Math.round(weather.current.feels_like)}° C</p>
+            </div>
+            <div className="descrip">
+                <img
+                    src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`}
+                />
+                <p>{weather.current.weather[0].description.capitalize()}</p>
+            </div>
+            <div className="others">
+                <p>Humidity: {weather.current.humidity}%</p>
+                <p>UV-Index: {weather.current.uvi}</p>
+            </div>
+        </>
     );
 }
 

@@ -1,3 +1,4 @@
+import Logo from "./logo";
 import { Component } from "react";
 import axios from "./axios";
 import { Link } from "react-router-dom";
@@ -44,65 +45,68 @@ export default class Registration extends Component {
 
     render() {
         return (
-            <div className="formField">
-                <div className="form">
-                    <div>
-                        <h2>Registration</h2>
-                        <p>
-                            join millions of cool peolple sharing their experiences
-                        </p>
-                        {this.state.error && (
+            <>
+                <div className="formField">
+                    <div className="form">
+                        <div className="header">
+                            <h2>Registration</h2>
                             <p>
-                                <span className="errorMessage">
-                                    Something went wrong. Please try again
-                                </span>
+                                join millions of cool peolple sharing their
+                                experiences
                             </p>
-                        )}
+                            {this.state.error && (
+                                <p>
+                                    <span className="errorMessage">
+                                        Something went wrong. Please try again
+                                    </span>
+                                </p>
+                            )}
+                        </div>
+
+                        <input
+                            onChange={(e) => this.handleChange(e)}
+                            name="first"
+                            placeholder="First Name"
+                            type="text"
+                            required
+                        />
+
+                        <input
+                            onChange={(e) => this.handleChange(e)}
+                            name="last"
+                            placeholder="Last Name"
+                            type="text"
+                            required
+                        />
+
+                        <input
+                            onChange={(e) => this.handleChange(e)}
+                            name="email"
+                            placeholder="Email"
+                            type="text"
+                            required
+                        />
+
+                        <input
+                            onChange={(e) => this.handleChange(e)}
+                            name="password"
+                            placeholder="Password"
+                            type="password"
+                            required
+                        />
+                        <button
+                            className="sig-up"
+                            onClick={(e) => this.handleClick(e)}
+                        >
+                            Sign Up
+                        </button>
+                        <p>If you are already a member</p>
+                        <Link to="/login">
+                            <button className="log-in">Log In</button>
+                        </Link>
                     </div>
-
-                    <input
-                        onChange={(e) => this.handleChange(e)}
-                        name="first"
-                        placeholder="First Name"
-                        type="text"
-                        required
-                    />
-
-                    <input
-                        onChange={(e) => this.handleChange(e)}
-                        name="last"
-                        placeholder="Last Name"
-                        type="text"
-                        required
-                    />
-
-                    <input
-                        onChange={(e) => this.handleChange(e)}
-                        name="email"
-                        placeholder="Email"
-                        type="text"
-                        required
-                    />
-
-                    <input
-                        onChange={(e) => this.handleChange(e)}
-                        name="password"
-                        placeholder="Password"
-                        type="password"
-                        required
-                    />
-                    <button
-                        className="sig-up"
-                        onClick={(e) => this.handleClick(e)}
-                    >
-                        Sign Up
-                    </button>
-                    <p>If you are already a member</p>
-                    <Link to="/login">
-                        <button className="log-in">Log In</button>
-                    </Link>
                 </div>
-            </div>
+            </>
         );
     }
 }

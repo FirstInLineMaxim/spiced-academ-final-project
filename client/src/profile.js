@@ -28,14 +28,15 @@ export default function Profile(props) {
                 </p>
                 <BioEditor setBio={props.setBio} bio={props.bio} />
             </div>
-            <div>
+            <div className="weather">
                 <Weather />
             </div>
-            <div>
+            <div className="todo-container">
                 <ToDoList
                     props={props.history}
                     on={setReload}
-                    todo={props.todo} />
+                    todo={props.todo}
+                />
             </div>
         </div>
     );

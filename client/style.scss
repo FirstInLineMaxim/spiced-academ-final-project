@@ -39,10 +39,20 @@ header {
     justify-content: flex-end;
     margin: 0;
     padding: 1.5vw 3vw;
-    height: 8vh;
+    height: 6vh;
     background-color: $bcg-color;
     box-shadow: 0 8px 6px -6px $font-color;
     z-index: 10;
+    .profile-img {
+        border-radius: 50% 50% 0 50%;
+        height: 45px;
+        width: 45px;
+        cursor: pointer;
+        object-fit: cover;
+        object-position: center right;
+        vertical-align: middle;
+        box-shadow: none;
+    }
     
 }
 
@@ -74,7 +84,21 @@ nav {
             }
         }
     }
-
+    svg {
+        width: 1.5rem;
+        cursor: pointer;
+        
+    }
+    svg:hover {
+        color: $primary-color;
+        animation: skew 1s infinite;
+        transform: skew(20deg);
+        animation-direction: alternate;
+    }
+    @keyframes skew {
+        0% {transform: skew(20deg, 20deg);};
+        100% {transform: skew(-20deg, -20deg);}
+    }
 }
 
 footer {
@@ -93,6 +117,17 @@ a {
     height: 3em;
 }
 
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    margin: 0;
+    left: 0;
+    padding: 1vh 1vw;
+    background-color: rgba(255, 255, 255, 0.322);
+}
+// HOME PAGE
 .home-page {
     display: flex;
     flex-direction: column;
@@ -145,4 +180,305 @@ a {
         text-transform: uppercase;
         h2:nth
     }
+}
+
+// FORM ELEMENTS
+.formField {
+    margin: 10rem auto;
+    padding: 2%;
+    width: 28.125rem;
+    height: auto;
+    min-height: 500px;
+    background-color: $bcg-color;
+    border-radius: 15px;
+    border: 2px solid $font-color;
+    .form {
+        margin: 0 auto;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: space-around;
+        justify-content: space-around;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+    .header {
+        margin: 2% auto 10% auto;
+        text-align: center;
+        h2 {
+            font-size: 2rem;
+            font-family: $font-title;
+            color: $font-color;
+        }
+        p {
+            letter-spacing: 0.05em;
+        }
+    }
+    .con {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    }
+    input {
+        display: block;
+        margin-top: 2%;
+        padding: 0 15px;
+        width: 15rem;
+        height: 3.125rem;
+        outline: none;
+        border: none;
+        border-bottom: 2px solid $secundary-color;
+        color: $font-color;
+        font-size: calc(0.6rem + 1vmin);
+        font-family: $font-stack;
+        transition: 0.2s linear;
+    }
+    input:focus {
+        transform: translateX(-10px);
+        border-bottom: 2px solid $fourth-color;
+    }
+    button {
+        display: inline-block;
+        margin: 6% auto;
+        padding: 0 1.25rem;
+        width: 15rem;
+        height: 3.125rem;
+        border: 2px solid $font-color;
+        border-radius: 50px;
+        background-color: $primary-color;
+        outline: none;
+        font-size: calc(0.4rem + 1vmin);
+        color: $font-color;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s linear;
+        text-transform: uppercase;
+    }
+    button::before {
+        border: 2px solid $font-color;
+    }
+    button:hover {
+        transform: matrix(1, 0, 0, 1, 7, 7);
+        transition: transform 0.4s cubic-bezier(0.17, 0.89, 0.32, 1.275) 0s, 
+            -webkit-transform 0.4s cubic-bezier(0.17, 0.89, 0.32, 1.275) 0s, 
+            transform 0.4s cubic-bezier(0.17, 0.89, 0.32, 1.275) 0s;
+        border-top-left-radius: 70px ;
+        border-top-right-radius: 70px;
+        border-bottom-left-radius: 70px;
+        border-bottom-right-radius: 70px;
+    }
+    .submits {
+        width: 40%;
+        display: inline-block;
+        margin-left: 7%;
+    }
+    .sig-up, .deleteAcc {
+        background-color: $secundary-color;
+    }
+    .frgt-pass, .delete {
+        background-color: $fourth-color;
+    }
+    .logout {
+        background-color: $third-color;
+    }
+}
+
+input[type=file] {
+    -webkit-appearance: textfield;
+    width: 240px;
+    height: 50px;
+    outline: none;
+    background-color: #fff;
+    color: $font-color;
+    font-size: calc(0.3rem + 1vmin);
+    text-align: center;
+    cursor: pointer;
+}
+
+input[type=file]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+label { 
+  font-size: calc(0.3rem + 1vmin); 
+  line-height: 4em;
+  text-transform: uppercase;
+  color: $font-color;
+  transition: all .3s ease-in;
+  opacity: 0;
+  cursor: pointer;
+}
+.outer {
+  position: relative;
+  margin-top: 5vh;
+  margin: auto;
+  width: 70px;
+  cursor: pointer;
+}
+
+.inner {
+  width: inherit;
+  text-align: center;
+}
+
+.inner:before, .inner:after {
+  position: absolute;
+  content: '';
+  height: 2px;
+  width: inherit;
+  background: $font-color;
+  left: 0;
+  transition: all .3s ease-in;
+}
+
+.inner:before {
+  top: 50%; 
+  transform: rotate(45deg);  
+}
+
+.inner:after {  
+  bottom: 50%;
+  transform: rotate(-45deg);  
+}
+
+.outer:hover label {
+  opacity: 1;
+}
+
+.outer:hover .inner:before,
+.outer:hover .inner:after {
+  transform: rotate(0);
+}
+
+.outer:hover .inner:before {
+  top: 0;
+}
+
+.outer:hover .inner:after {
+  bottom: 0;
+}
+
+// PROFILE
+.profile  {
+    margin: 15vh 5vw;
+    flex-grow: 1;
+    position: relative;
+    display: grid;
+    grid-template-columns: 30%  1fr 30%;
+    grid-template-rows: 46%  1fr;
+    grid-gap: 2vw;
+    .profile-img {
+        height: 19rem;
+        width: 19rem;
+        object-fit: cover;
+        object-position: center right;
+        cursor: pointer;
+        border: 2px solid $font-color;
+    }
+    .profile-img:hover {
+        transform: matrix(1, 0, 0, 1, 7, 7);
+        transition: transform 0.4s cubic-bezier(0.17, 0.89, 0.32, 1.275) 0s, 
+            -webkit-transform 0.4s cubic-bezier(0.17, 0.89, 0.32, 1.275) 0s, 
+            transform 0.4s cubic-bezier(0.17, 0.89, 0.32, 1.275) 0s;
+    }
+    .add-bio {
+        background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $third-color 30%);
+        cursor: pointer;
+    }
+    .add-bio:hover {
+        background: linear-gradient(180deg, rgba(230, 32, 32, 0) 50%, $third-color 50%);
+    }
+    .edit {
+        background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $primary-color 30%);
+    }
+    .edit:hover {
+        background: linear-gradient(180deg, rgba(230, 32, 32, 0) 50%, $primary-color 50%);
+    }
+    .delete {
+        background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $secundary-color 30%);
+    }
+    .delete:hover {
+        background: linear-gradient(180deg, rgba(230, 32, 32, 0) 50%, $secundary-color 50%);
+    }
+    .blue {
+        color: $secundary-color;
+        font-family: $font-title;
+    }
+    .green {
+        color: $third-color;
+        font-family: $font-title;
+    }
+}
+
+
+textarea {
+    display: block;
+    margin-top: 2%;
+    padding: 15px;
+    width: 240px;
+    height: 150px;
+    outline: none;
+    border: 2px solid $font-color;
+    border-radius: 15px;
+    resize: none;
+    color: $font-color;
+    font-size: calc(0.6rem + 1vmin);
+    font-family: "Comfortaa";
+    transition: 0.2s linear;
+}
+textarea:focus {
+    transform: translateX(-10px);
+}
+
+.weather {
+    display: grid;
+    padding: 1vh 1vw;
+    grid-gap: 1vh 1vw;
+    border: 2px solid $font-color;
+    justify-items: center;
+    align-items: center;
+    grid-template: repeat(4, [row] 5rem) / repeat(2, [col] 1fr);
+    .blue {
+    grid-column: 1 / span 2;
+    margin: 0 auto;
+    }
+    .location {
+        grid-column: 1 / span 2;
+        margin: 0 auto;
+    }
+    .descrip {
+        grid-row: 3;
+    }
+    .others {
+        grid-column: 1 / span 2;
+        margin: 0 auto;
+    }
+    p {
+        font-size: .7rem;
+    }
+    img {
+        width: 3.5rem;
+        height: auto;
+    }
+}
+
+.todo-container {
+    grid-column: 1 / span 3;
+    justify-self: center;
+    align-self: center;
+}
+
+
+@media screen and (max-width: 700px) {
+  .profile, .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+  }
+
+  .bio-cropper {
+    text-align: center;
+  }
 }

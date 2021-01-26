@@ -80,14 +80,14 @@ export default class ResetPassword extends Component {
         if (this.state.view === 2) {
             return (
                 <div className="formField">
-                    <header>
+                    <div className="header">
                         <h2>Reset Password</h2>
                         {this.state.error && (
                             <p className="errorMessage">
                                 Something went wrong. Please try again
                             </p>
                         )}
-                    </header>
+                    </div>
                     <div className="form">
                         <p>Your password was sucessfully updated! </p>
                         <Link to="/login">
@@ -99,7 +99,7 @@ export default class ResetPassword extends Component {
         } else if (this.state.view === 1) {
             return (
                 <div className="formField">
-                    <header>
+                    <div className="header">
                         <h2>Reset Password</h2>
                         <p>
                             Please enter the code that was recently sent to you
@@ -110,7 +110,7 @@ export default class ResetPassword extends Component {
                                 Something went wrong. Please try again
                             </p>
                         )}
-                    </header>
+                    </div>
                     <div className="form">
                         <input
                             onChange={(e) => this.handleChange(e)}
@@ -145,7 +145,7 @@ export default class ResetPassword extends Component {
         } else {
             return (
                 <div className="formField">
-                    <header>
+                    <div className="header">
                         <h2>Reset Password</h2>
                         <p>
                             Please your e-mail and we will send to your the
@@ -156,7 +156,7 @@ export default class ResetPassword extends Component {
                                 Something went wrong. Please try again
                             </p>
                         )}
-                    </header>
+                    </div>
                     <div className="form">
                         <input
                             onChange={(e) => this.handleChange(e)}
@@ -165,12 +165,11 @@ export default class ResetPassword extends Component {
                             type="text"
                             required
                         />
-                        <button 
-                            onClick={(e) => this.sendCode(e)}>
+                        <button onClick={(e) => this.sendCode(e)}>
                             Send Reset Code
                         </button>
                     </div>
-                    <Link to='/login'>
+                    <Link to="/login">
                         <div
                             className="outer"
                             onClick={() => this.props.toggleUploader()}

@@ -28,11 +28,18 @@ export default function Account({ toggleMenu, toggleUploader }) {
         <>
             <div className="overlay">
                 <div className="uploadModal formField">
-                    <header>
+                    <div className="header">
                         <h2>Account</h2>
-                    </header>
+                    </div>
                     <div className="form">
-                        <button onClick={function(event){toggleMenu(event); toggleUploader();}}>Edit profile</button>
+                        <button
+                            onClick={function (event) {
+                                toggleMenu(event);
+                                toggleUploader();
+                            }}
+                        >
+                            Edit profile
+                        </button>
                         <button
                             className="deleteAcc"
                             onClick={() =>
@@ -43,7 +50,7 @@ export default function Account({ toggleMenu, toggleUploader }) {
                         >
                             Delete account
                         </button>
-                        <button onClick={logout}>Logout</button>
+                        <button className='logout' onClick={logout}>Logout</button>
                     </div>
                     <div className="outer" onClick={toggleMenu}>
                         <div className="inner">

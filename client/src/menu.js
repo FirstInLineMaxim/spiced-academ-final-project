@@ -1,10 +1,6 @@
-import {FaEllipsisV} from "react-icons/fa";
+import { IoMenuOutline } from "react-icons/io5";
 
 export default function Menu({ toggleMenu }) {
     
-    return (
-        <FaEllipsisV 
-            onClick={() => toggleMenu()}>
-        </FaEllipsisV>
-    );
+    return <IoMenuOutline onClick={() => toggleMenu()}></IoMenuOutline>;
 }

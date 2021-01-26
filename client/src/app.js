@@ -12,7 +12,7 @@ import Menu from './menu';
 import Account from "./account";
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import { FaSearch, FaComments } from "react-icons/fa";
+import { IoSearchOutline, IoChatboxOutline } from "react-icons/io5";
 
 export default class App extends Component {
     constructor() {
@@ -77,7 +77,7 @@ export default class App extends Component {
         return (
             <BrowserRouter>
                 <>
-                    <header className="main-header">
+                    <header>
                         <Link to="/home">
                             <Logo />
                         </Link>
@@ -85,12 +85,12 @@ export default class App extends Component {
                             <ul>
                                 <li>
                                     <Link to="/users">
-                                        <FaSearch className="icon"></FaSearch>
+                                        <IoSearchOutline className="icon-1"></IoSearchOutline>
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/chat">
-                                        <FaComments className="icon"></FaComments>
+                                        <IoChatboxOutline className="icon"></IoChatboxOutline>
                                     </Link>
                                 </li>
                                 <li>
@@ -99,14 +99,6 @@ export default class App extends Component {
                                     />
                                 </li>
                                 <li>
-                                    {/* <Link to="/">
-                                        <ProfilePic
-                                            id={this.state.id}
-                                            first={this.state.first}
-                                            last={this.state.last}
-                                            profile_pic={this.state.profile_pic}
-                                        />
-                                    </Link> */}
                                     <Link to="/">
                                         <img
                                             className="profile-img"
