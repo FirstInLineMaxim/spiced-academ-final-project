@@ -37,11 +37,20 @@ export default function Home() {
                             kinfolk kogi thundercats seitan taiyaki. Iceland
                             retro fixie plaid chillwave etsy single-origin
                             coffee live-edge vaporware air plant knausgaard
-                            williamsburg glossier.
+                            williamsburg glossier. I am baby biodiesel four loko
+                            copper mug hoodie. Stumptown scenester selfies
+                            pinterest. Succulents bitters shoreditch,
+                            microdosing organic messenger bag mixtape
+                            thundercats beard typewriter street art health goth
+                            VHS DIY godard. Gluten-free pinterest kinfolk kogi
+                            thundercats seitan taiyaki. Iceland retro fixie
+                            plaid chillwave etsy single-origin coffee live-edge
+                            vaporware air plant knausgaard williamsburg
+                            glossier.
                         </p>
                     </div>
-                    <div className="item-2">
-                        <img src="../home1.svg" />
+                    <div className="item-2 aside-image">
+                        <img src="../home1.png" />
                     </div>
                 </div>
                 <div className="grid">
@@ -70,8 +79,8 @@ export default function Home() {
                             glossier.
                         </p>
                     </div>
-                    <div className="item-2 bottom-2">
-                        <img src="../home2.svg" />
+                    <div className="item-2 bottom-2 aside-image">
+                        <img src="../home2.png" />
                     </div>
                 </div>
             </div>

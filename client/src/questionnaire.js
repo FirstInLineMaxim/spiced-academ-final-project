@@ -77,8 +77,8 @@ export default function Questionnaire(props) {
     return (
         <div className="survey-page">
             <div className="aside-image">
-                {!showScore && <img src="../peep-35.svg" />}
-                {showScore && <img src="../peep-23.svg" />}
+                {!showScore && <img src="../survey.svg" />}
+                {showScore && <img src="../survey2.svg" />}
             </div>
             <div className="survey-container">
                 <h1>Questionnaire</h1>

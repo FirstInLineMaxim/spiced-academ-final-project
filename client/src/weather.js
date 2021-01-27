@@ -2,11 +2,17 @@
 import axios from "./axios";
 import { useState, useEffect } from "react";
 const { API_key } = require("../../server/secrets.json");
+import {
+    uviRecomendation,
+    tempRecomendation,
+} from "./helpers/weatherRecomentations";
+
 
 export default function Weather() {
     const [weather, setWeather] = useState(null);
 
     useEffect(() => {
+        console.log(tempRecomendation(8));
         navigator.permissions
             .query({ name: "geolocation" })
             .then(({ state }) => {
@@ -24,10 +30,10 @@ export default function Weather() {
                 } else {
                     console.log(state);
                     let location = {
-                        // lat: "-23.533773",
-                        // lon: "-46.625290",
-                        lat: "52.5563825",
-                        lon: "13.384439",
+                        lat: "-23.533773",
+                        lon: "-46.625290",
+                        // lat: "52.5563825",
+                        // lon: "13.384439",
                     };
                     alert(
                         "Geolocation API is not supported in your browser. Getting weather from the website location, which is Berlin."
@@ -45,25 +51,39 @@ export default function Weather() {
 
     if (!weather) {
         return null;
-    }
+    }    
 
     return (
         <>
-            <h2>Weather</h2>
-            <p className="location"> {weather.timezone}</p>
-            <div className="temp">
-                <p>Temperature: {Math.round(weather.current.temp)}° C</p>
-                <p>Feels like: {Math.round(weather.current.feels_like)}° C</p>
+            <div className="weather">
+                <h2>Weather</h2>
+                <p className="location"> {weather.timezone}</p>
+                <div className="temp">
+                    <p>Temperature: {Math.round(weather.current.temp)}° C</p>
+                    <p>
+                        Feels like: {Math.round(weather.current.feels_like)}° C
+                    </p>
+                </div>
+                <div className="descrip">
+                    <p>{weather.current.weather[0].description.capitalize()}</p>
+                    <img
+                        src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`}
+                    />
+                </div>
+                <div className="others">
+                    <p>Humidity: {weather.current.humidity}%</p>
+                    <p>UV-Index: {weather.current.uvi}</p>
+                </div>
             </div>
-            <div className="descrip">
-                <p>{weather.current.weather[0].description.capitalize()}</p>
-                <img
-                    src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`}
-                />
-            </div>
-            <div className="others">
-                <p>Humidity: {weather.current.humidity}%</p>
-                <p>UV-Index: {weather.current.uvi}</p>
+            <div className='recomendations'>
+                <h2>Recomendations</h2>
+                <p>{uviRecomendation(weather.current.uvi)}</p>
+                {tempRecomendation(weather.current.temp).map((item, idx) => (
+                    <div key={idx}>
+                        <h3>{item.title}</h3>
+                        <p>{item.text}</p>
+                    </div>
+                ))}
             </div>
         </>
     );

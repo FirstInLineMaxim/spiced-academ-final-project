@@ -1,37 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
 import { socket } from "./socket";
-import { useState } from "react";
-import { IoTrashBinOutline, IoArrowUpCircleOutline } from "react-icons/io5";
+import { IoTrashBinOutline, } from "react-icons/io5";
 import { deleteMessage } from "./redux/actions";
 
 export default function Chat(props) {
     const dispatch = useDispatch();
-    const [showScroll, setShowScroll] = useState(false);
-    //1. retrieve chat messages from Redux and render them
+
     const chatMessages = useSelector((state) => state && state.chatMessages);
-    //2. post new messages
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
-            //send message off to server using sockets instead of axios
-            //socket.emit will send a message to the server
             socket.emit("New message", e.target.value);
             e.target.value = "";
         }
     };
-
-    const checkScrollTop = () => {
-        if (!showScroll && window.pageYOffset > 100) {
-            setShowScroll(true);
-        } else if (showScroll && window.pageYOffset <= 100) {
-            setShowScroll(false);
-        }
-    };
-
-    const scrollTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    window.addEventListener("scroll", checkScrollTop);
 
     if (!chatMessages) {
         return null;
@@ -39,7 +20,11 @@ export default function Chat(props) {
 
     return (
         <div className="chat-page">
-            <h1>Welcome to chatroom</h1>
+            <div className="aside-image">
+                <h1>Welcome to chatroom</h1>
+                <p>rules</p>
+                <img src="../chat.svg" />
+            </div>
             <div className="chat-container">
                 <div className="messages-container">
                     {chatMessages &&
@@ -74,14 +59,6 @@ export default function Chat(props) {
                 <textarea
                     placeholder="Add your message here"
                     onKeyDown={handleKeyDown}
-                />
-                <IoArrowUpCircleOutline
-                    className="scrollTop"
-                    onClick={scrollTop}
-                    style={{
-                        height: 40,
-                        display: showScroll ? "flex" : "none",
-                    }}
                 />
             </div>
         </div>

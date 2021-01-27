@@ -170,10 +170,18 @@ a {
         
         }
     }
-    img {
-        width: 15rem;
-        height: auto;
-        margin: 0 auto;
+    .aside-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        max-height: 100vh;
+        img {
+            max-width:100%;
+            height:100%;
+            object-fit: cover;
+            // margin-top: 25rem;
+        }
     }
     h2 {
         font-family: $font-title;
@@ -184,7 +192,7 @@ a {
 
 // FORM ELEMENTS
 .formField {
-    margin: 10rem auto;
+    margin: 6rem auto;
     padding: 2%;
     width: 28.125rem;
     height: auto;
@@ -413,7 +421,6 @@ label {
     }
 }
 
-
 textarea {
     display: block;
     margin-top: 2%;
@@ -440,7 +447,7 @@ textarea:focus {
     grid-gap: 1vh 1vw;
     grid-row: 2;
     height: 18rem;
-    width: 18rem;
+    width: 20rem;
     border-radius: 15px;
     justify-items: center;
     align-items: center;
@@ -485,11 +492,35 @@ textarea:focus {
     }
 }
 
+.recomendations {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0.5rem;
+    min-height: 18rem;
+    width: 20rem;
+    border-radius: 15px;
+    justify-self: center;
+    align-items: center;
+    background-color: $primary-color;
+    h2 {
+    grid-column: 1 / span 2;
+    margin: 0 auto;
+    color: $bcg-color;
+    font-family: $font-title;
+    font-weight: 700;
+    }
+    p {
+        font-size: .86rem;
+        padding: .33rem;
+    }
+
+}
+
 .todo-container {
     grid-column: 3;
     grid-row: 1 / span 2;
     justify-self: center;
-    align-self: center;
+    align-self: start;
     display: flex;
     flex-direction: column;
     .todo-week {
@@ -562,9 +593,9 @@ textarea:focus {
         overflow: hidden;
         img {
             max-width:100%;
-            height:100%;
-            object-fit: conver;
-            margin-top: 34vh;
+            height:70%;
+            object-fit: cover;
+            margin-top: 15vh;
         }
     }
 }
@@ -634,10 +665,12 @@ textarea:focus {
 
 .chat-page {
     display: flex;
-    flex-direction: column;
-    margin: 10vh 20vw;
+    max-height: 100vh;
+    flex-direction: row;
+    margin: 15vh 5vw;
     .chat-container {
         display: flex;
+        height: 35rem;
         flex-direction: column;
         padding: 2vw 2vh;
         border: 2px solid $font-color;
@@ -651,6 +684,8 @@ textarea:focus {
         .messages-container {
             display: flex;
             flex-direction: column-reverse;
+            max-height: 100vh;
+            overflow-y: scroll;
             margin: 1vh 1vw;
             grid-gap: .5rem;
             .message-container {
@@ -716,6 +751,15 @@ textarea:focus {
             }
         }
               
-    }               
+    }
+    .aside-image {
+        width: 85rem;
+        overflow: hidden;
+        img {
+            max-width:100%;
+            height:80%;
+            object-fit: cover;
+        }
+    }              
 }
 

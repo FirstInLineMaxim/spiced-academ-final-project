@@ -2,7 +2,7 @@ import { Component } from "react";
 import axios from "./axios";
 import Uploader from "./uploader";
 import Profile from './profile';
-import ProfilePic from "./profilepic";
+import Recomendations from "./recomendations";
 import OtherProfile from "./otherPorfile";
 import Logo from "./logo";
 import FindPeople from "./findPeople";
@@ -89,7 +89,7 @@ export default class App extends Component {
                         <nav>
                             <ul>
                                 <li>
-                                    <Link to="/users">
+                                    <Link to="recomendations">
                                         <IoSearchOutline className="icon-1"></IoSearchOutline>
                                     </Link>
                                 </li>
@@ -173,6 +173,20 @@ export default class App extends Component {
                         render={(props) => (
                             <Questionnaire
                                 setTodo={(e) => this.setTodo(e)}
+                                match={props.match}
+                                key={props.match.url}
+                                history={props.history}
+                            />
+                        )}
+                    />
+
+                    <Route
+                        path="/recomendations"
+                        render={(props) => (
+                            <Recomendations
+                                hair_type={this.state.hair_type}
+                                hair_health={this.state.hair_health}
+                                todo={this.state.todo}
                                 match={props.match}
                                 key={props.match.url}
                                 history={props.history}

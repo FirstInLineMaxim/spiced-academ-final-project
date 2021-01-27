@@ -2,16 +2,7 @@ import BioEditor from "./bioEditor";
 import ProfilePic from "./profilepic";
 import ToDoList from "./todo";
 import Weather from "./weather";
-import { useState, useEffect } from "react";
-import axios from "./axios";
-
-
-
 export default function Profile(props) {
-    console.log(props);
-    useEffect(() => {
-    }, []);
-    
     return (
         <div className="profile">
             <ProfilePic
@@ -26,14 +17,9 @@ export default function Profile(props) {
                 </p>
                 <BioEditor setBio={props.setBio} bio={props.bio} />
             </div>
-            <div className="weather">
-                <Weather />
-            </div>
+            <Weather />
             <div className="todo-container">
-                <ToDoList
-                    props={props.history}
-                    todo={props.todo}
-                />
+                <ToDoList props={props.history} todo={props.todo} />
             </div>
         </div>
     );
