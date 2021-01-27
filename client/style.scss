@@ -134,15 +134,16 @@ a {
         .item-1,
         .item-2 {
         align-items: center;
-        line-height: 1;
+        line-height: 1.5;
         display: flex;
         flex-direction: column;
         justify-content: center;
         }
         .item-1 {
-        grid-column: col 1 / span 3;
+        grid-column: col 1 / span 2;
         grid-row: row 1 / span 2;
         z-index: 2;
+        margin-right: 2rem;
         h2 {
             color: $third-color;
         }
@@ -160,7 +161,6 @@ a {
             h2 {
             color: $primary-color;
         }
-        
         }
     }
     .aside-image {
@@ -489,7 +489,7 @@ textarea:focus {
     display: flex;
     flex-direction: column;
     padding: 0.5rem 0.5rem;
-    min-height: 18rem;
+    min-height: auto;
     width: 20rem;
     border-radius: 15px;
     justify-self: center;

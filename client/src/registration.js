@@ -31,7 +31,7 @@ export default class Registration extends Component {
                         error: true,
                     });
                 } else {
-                    location.replace("/questionnaire");
+                    location.replace("/survey");
                 }
             })
             .catch((error) => {

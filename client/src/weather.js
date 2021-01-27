@@ -12,12 +12,10 @@ export default function Weather() {
     const [weather, setWeather] = useState(null);
 
     useEffect(() => {
-        console.log(tempRecomendation(8));
         navigator.permissions
             .query({ name: "geolocation" })
             .then(({ state }) => {
                 if (state == "granted") {
-                    console.log(state);
                     navigator.geolocation.getCurrentPosition(
                         async (position) => {
                             let { latitude, longitude } = position.coords;
@@ -28,7 +26,6 @@ export default function Weather() {
                         }
                     );
                 } else {
-                    console.log(state);
                     let location = {
                         lat: "-23.533773",
                         lon: "-46.625290",

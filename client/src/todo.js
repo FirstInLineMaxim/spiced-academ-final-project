@@ -31,7 +31,7 @@ export default function ToDoList({todo}) {
 
     return (
         <>
-            <h2 className="green">Capillary Schedule</h2>
+            <h2 className="green">Hair Care Routine</h2>
             <div className="todo-list">
                 {Object.keys(todos || {}).map((week, idx) => {
                     return (

@@ -210,10 +210,11 @@ app.get('/profile.json', (req, res) => {
         });
 });
 
-app.post("/upload", uploader.single("image"), s3.upload, (req, res) => {
+app.post("/upload", uploader.single("profile_pic"), s3.upload, (req, res) => {
+    console.log();
     if (req.file) {
         const url = `${s3Url}${req.session.userId}/${req.file.filename}`;
-        console.log('url', url);
+        console.log("url", url);
         db.editProfilePic(req.session.userId, url)
             .then(() => {
                 res.json({ sucess: true, url: url });
@@ -257,7 +258,7 @@ app.post("/delete-bio", (req, res) => {
         });
 });
 
-app.post("/delete-profile-pic", (req, res) => {
+app.post("/delete-profile-pic", s3.delete, (req, res) => {
     const newUrl = null;
     db.editProfilePic(req.session.userId, newUrl)
         .then(() => {
