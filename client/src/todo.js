@@ -23,13 +23,16 @@ export default function ToDoList({ todo }) {
 
     const clearTodo = () => {
         localStorage.clear();
+        console.log(todos);
+        todos.map(week => (week.map(item => ({...item, isCompleted: false}))));
+        //
     };
 
     return (
         <>
             <h2 className="green">Capillary Schedule</h2>
             <div className="todo-list">
-                {Object.keys(todos).map((week, idx) => {
+                {Object.keys(todos || {}).map((week, idx) => {
                     return (
                         <div className="todo-week" key={idx}>
                             <p>{week}</p>

@@ -96,7 +96,7 @@ module.exports.getUserProfile = (userId) => {
     const q = `
         SELECT users.id, first_name, last_name, CONCAT (first_name, ' ', last_name) AS full_name, bio, profile_pic, users.hair_health, hair_type, todo
         FROM users
-        JOIN survey_results
+        LEFT JOIN survey_results
         ON users.hair_health = survey_results.hair_health
         WHERE users.id = $1
         `;

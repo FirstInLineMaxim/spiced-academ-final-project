@@ -36,11 +36,12 @@ export default class App extends Component {
         axios
             .get("/profile.json")
             .then(({ data }) => {
+                console.log('data', data);
                 this.setState({ ...data });
             })
             .catch((error) => {
                 console.log("error", error);
-                this.props.history.push("/");
+                // this.props.history.push("/");
             });
     }
 

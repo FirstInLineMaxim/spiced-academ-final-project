@@ -24,6 +24,8 @@ export default function Weather() {
                 } else {
                     console.log(state);
                     let location = {
+                        // lat: "-23.533773",
+                        // lon: "-46.625290",
                         lat: "52.5563825",
                         lon: "13.384439",
                     };
