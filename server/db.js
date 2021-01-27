@@ -136,28 +136,6 @@ module.exports.editBio = (userId, bio) => {
     return db.query(q, params);
 };
 
-/////////////////////////QUERY find people///////////////////////////
-module.exports.getUsers = () => {
-    const q = `
-        SELECT id,first_name, last_name, CONCAT (first_name, ' ', last_name) AS full_name, bio, profile_pic 
-        FROM users
-        ORDER BY id DESC
-        LIMIT 3;
-        `;
-    return db.query(q);
-};
-
-module.exports.getMatchingPeople = (val) => {
-    const q = `
-        SELECT id, first_name, last_name, CONCAT (first_name, ' ', last_name) AS full_name, bio, profile_pic 
-        FROM users
-        WHERE first_name ILIKE $1 OR last_name ILIKE $1
-        LIMIT 4;
-        `;
-    const params = [val + '%'];        
-    return db.query(q, params);
-};
-
 /////////////////////////QUERY for chat ///////////////////////////
 module.exports.getMostRecentMessages = () => {
     const q = `

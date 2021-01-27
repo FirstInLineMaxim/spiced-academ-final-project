@@ -90,13 +90,6 @@ nav {
     }
     svg:hover {
         color: $primary-color;
-        animation: skew 1s infinite;
-        transform: skew(20deg);
-        animation-direction: alternate;
-    }
-    @keyframes skew {
-        0% {transform: skew(20deg, 20deg);};
-        100% {transform: skew(-20deg, -20deg);}
     }
 }
 

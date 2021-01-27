@@ -31,7 +31,6 @@ export default class Registration extends Component {
                         error: true,
                     });
                 } else {
-                    //relocate to questionary page
                     location.replace("/questionnaire");
                 }
             })

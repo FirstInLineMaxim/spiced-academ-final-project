@@ -29,22 +29,19 @@ module.exports.upload = (req, res, next) => {
 
     promise
         .then(() => {
-            // it worked!!!
             console.log("amazon upload complete :)");
             next();
-            //optional clean up
-            //this is called a noop function - no operation
             fs.unlink(path, () => {});
         })
         .catch((err) => {
-            // uh oh
             console.log("Something went wrong in uploading to S3", err);
-            res.statusCode(404); //confirm if this error is correct
+            res.statusCode(404);
         });
 };
 
 module.exports.delete = (req, res, next) => {
-    const filename = req.body.image.substr(42);
+    console.log(req.body.image);
+    const filename = req.body.profile_pic.substr(42);
 
     const promise = s3
         .deleteObject({

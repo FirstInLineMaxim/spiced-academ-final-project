@@ -3,16 +3,14 @@ import axios from "./axios";
 import Uploader from "./uploader";
 import Profile from './profile';
 import Recomendations from "./recomendations";
-import OtherProfile from "./otherPorfile";
 import Logo from "./logo";
-import FindPeople from "./findPeople";
 import Chat from "./chat";
 import Questionnaire from "./questionnaire";
 import Menu from './menu';
 import Account from "./account";
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import { IoSearchOutline, IoChatboxOutline } from "react-icons/io5";
+import { IoBookmarkOutline, IoChatboxOutline } from "react-icons/io5";
 
 export default class App extends Component {
     constructor() {
@@ -90,12 +88,12 @@ export default class App extends Component {
                             <ul>
                                 <li>
                                     <Link to="recomendations">
-                                        <IoSearchOutline className="icon-1"></IoSearchOutline>
+                                        <IoBookmarkOutline className="icon-1" />
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/chat">
-                                        <IoChatboxOutline className="icon"></IoChatboxOutline>
+                                        <IoChatboxOutline className="icon" />
                                     </Link>
                                 </li>
                                 <li>
@@ -107,7 +105,10 @@ export default class App extends Component {
                                     <Link to="/">
                                         <img
                                             className="profile-img"
-                                            src={this.state.profile_pic}
+                                            src={
+                                                this.profile_pic ||
+                                                "../default-img.png"
+                                            }
                                         />
                                     </Link>
                                 </li>
@@ -133,29 +134,6 @@ export default class App extends Component {
                             />
                         )}
                     />
-
-                    <Route
-                        path="/user/:id"
-                        render={(props) => (
-                            <OtherProfile
-                                match={props.match}
-                                key={props.match.url}
-                                history={props.history}
-                            />
-                        )}
-                    />
-
-                    <Route
-                        path="/users"
-                        render={(props) => (
-                            <FindPeople
-                                match={props.match}
-                                key={props.match.url}
-                                history={props.history}
-                            />
-                        )}
-                    />
-
                     <Route
                         path="/chat"
                         render={(props) => (

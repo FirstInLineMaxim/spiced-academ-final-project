@@ -257,7 +257,7 @@ app.post("/delete-bio", (req, res) => {
         });
 });
 
-app.post("/delete-profile-pic", s3.delete, (req, res) => {
+app.post("/delete-profile-pic", (req, res) => {
     const newUrl = null;
     db.editProfilePic(req.session.userId, newUrl)
         .then(() => {
@@ -267,48 +267,7 @@ app.post("/delete-profile-pic", s3.delete, (req, res) => {
             console.log("Error in delete-profile-pic: ", error);
             res.json({ error: true });
         });
-
 });
-
-app.get("/member/:id", (req, res) => {
-    const { id } = req.params;
-    db.getOtherUserProfile(id)
-        .then(({ rows }) => {
-            if (rows.length > 0) {
-                rows[0]["loggedId"] = req.session.userId;
-                rows[0].success = true;
-                res.json(rows[0]);
-            } else {
-                res.status(404);
-            }
-        })
-        .catch((error) => {
-            console.log("/member/:id error ", error);
-            res.json({ error: true });
-        });
-});
-
-app.get("/latest-users", (req, res) => {
-    db.getUsers()
-        .then(({ rows }) => {
-            res.json(rows);
-        }).catch((error) => {
-            console.log("/latest-users error ", error);
-            res.json({ error: true });
-        });
-});
-
-app.get("/find-users/:query", (req, res) => {
-    db.getMatchingPeople(req.params.query)
-        .then(({ rows }) => {
-            res.json(rows);
-        })
-        .catch((error) => {
-            console.log("/find-users/ error ", error);
-            res.json({ error: true });
-        });
-});
-
 
 app.get('/logout', (req, res) => {
     req.session.userId = null;
