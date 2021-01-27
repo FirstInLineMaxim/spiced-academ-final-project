@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function ToDoList({ todo }) {
+export default function ToDoList({todo}) {
     const [todos, setTodos] = useState(todo);
 
     const completeTodo = (index, week) => {
@@ -14,6 +14,7 @@ export default function ToDoList({ todo }) {
 
     useEffect(() => {
         const localStorageList = localStorage.getItem("todo-list");
+        // app.get('')
         if (!localStorageList) {
             return null;
         } else {

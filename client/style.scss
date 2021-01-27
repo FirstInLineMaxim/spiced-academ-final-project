@@ -366,7 +366,7 @@ label {
     position: relative;
     display: grid;
     grid-template-columns: 30%  1fr 30%;
-    grid-template-rows: 35%  1fr;
+    grid-template-rows: 32%  1fr;
     grid-gap: 2vw;
     .profile-img {
         height: 19rem;
@@ -710,7 +710,7 @@ textarea:focus {
             animation: fadeIn 0.3s;
             transition: opacity 0.4s;
             opacity: 0.5;
-            color: rgb(255, 148, 169);
+            color: $third-color;
             &:hover{
                 opacity: 1;
             }

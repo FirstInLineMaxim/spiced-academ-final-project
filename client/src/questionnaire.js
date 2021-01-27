@@ -2,7 +2,8 @@ import axios from "./axios";
 import { useState, useEffect } from "react";
 const { questionnaire } = require("./helpers/survey.json");
 
-export default function Questionnaire() {
+export default function Questionnaire(props) {
+    // console.log(props);
     const [hairType, setHairType] = useState();
     const [hairHealth, sethairHealth] = useState();
     const [hairHealthExplanation, sethairHealthExplanation] = useState();
@@ -57,16 +58,21 @@ export default function Questionnaire() {
     useEffect(() => {
         console.log("hairType", hairType);
         console.log("hairHealth", hairHealth);
-        axios
-            .get("/questionnaire-results/" + hairHealth)
-            .then(({ data }) => {
-                console.log("data", data[0]);
-                sethairHealthExplanation(data[0].explanation);
-            })
-            .catch((error) => {
-                console.log("error", error);
-            });
-    }, [hairHealth]);
+        if (hairHealth != "undefined") {
+            axios
+                .get("/questionnaire-results/" + hairHealth)
+                .then(({ data }) => {
+                    console.log("todo", data[0].todo);
+                    props.setTodo(data[0].todo);
+                    sethairHealthExplanation(data[0].explanation);
+                })
+                .catch((error) => {
+                    console.log("error", error);
+                });
+        } else {
+            return;
+        }
+    }, [hairType, hairHealth]);
 
     return (
         <div className="survey-page">

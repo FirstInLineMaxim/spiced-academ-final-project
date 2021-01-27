@@ -28,7 +28,7 @@ export default class App extends Component {
             hair_health: "",
             todo: "",
             uploaderIsVisible: false,
-            menuIsVisible: false
+            menuIsVisible: false,
         };
     }
 
@@ -36,7 +36,6 @@ export default class App extends Component {
         axios
             .get("/profile.json")
             .then(({ data }) => {
-                console.log('data', data);
                 this.setState({ ...data });
             })
             .catch((error) => {
@@ -66,6 +65,11 @@ export default class App extends Component {
     setBio(newBio) {
         this.setState({
             bio: newBio,
+        });
+    }
+    setTodo(newTodo) {
+        this.setState({
+            todo: newTodo,
         });
     }
 
@@ -168,6 +172,7 @@ export default class App extends Component {
                         path="/survey"
                         render={(props) => (
                             <Questionnaire
+                                setTodo={(e) => this.setTodo(e)}
                                 match={props.match}
                                 key={props.match.url}
                                 history={props.history}

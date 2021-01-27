@@ -131,7 +131,7 @@ UPDATE survey_results SET todo = '{
             "isCompleted": false
         }
     ]
-}' ::jsonb WHERE hair_health =  'damaged';
+}' ::jsonb WHERE id =  5;
 
 UPDATE survey_results SET todo = '{
     "1st Week": [

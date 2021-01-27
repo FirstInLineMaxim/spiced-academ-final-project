@@ -200,10 +200,8 @@ app.post("/home/reset-password/verify", (req, res) => {
 });
 
 app.get('/profile.json', (req, res) => {
-    console.log('get request', req.session.userId);
     db.getUserProfile(req.session.userId)
         .then(({ rows }) => {
-            console.log("rows", rows);
             res.json(rows[0]);
         })
         .catch((error) => {
@@ -377,6 +375,7 @@ app.get("/questionnaire-results/:hairHealth", (req, res) => {
     if (hairHealth != 'undefined') {
         db.getSurveyResults(hairHealth)
             .then(({ rows }) => {
+                console.log('rows', rows);
                 res.json(rows);
             })
             .catch((error) => {

@@ -30,7 +30,7 @@ module.exports.addSurveyResults = (userId, hair_type, hair_health) => {
 
 module.exports.getSurveyResults = (hair_health) => {
     const q = `
-        SELECT hair_health, explanation
+        SELECT hair_health, explanation, todo
         FROM survey_results
         WHERE hair_health=$1;
     `;

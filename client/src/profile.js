@@ -3,16 +3,14 @@ import ProfilePic from "./profilepic";
 import ToDoList from "./todo";
 import Weather from "./weather";
 import { useState, useEffect } from "react";
+import axios from "./axios";
+
 
 
 export default function Profile(props) {
-    const [reload, setReload] = useState(false);
-
+    console.log(props);
     useEffect(() => {
-        console.log("reload", reload);
-        setReload(false);
-        
-    }, [reload]);
+    }, []);
     
     return (
         <div className="profile">
@@ -34,7 +32,6 @@ export default function Profile(props) {
             <div className="todo-container">
                 <ToDoList
                     props={props.history}
-                    on={setReload}
                     todo={props.todo}
                 />
             </div>
