@@ -1,4 +1,6 @@
+//todo
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function ToDoList({ todo }) {
     const [todos, setTodos] = useState(todo);
@@ -25,11 +27,11 @@ export default function ToDoList({ todo }) {
 
     return (
         <>
-            <h2 className='green'>TODO</h2>
+            <h2 className="green">Capillary Schedule</h2>
             <div className="todo-list">
                 {Object.keys(todos).map((week, idx) => {
                     return (
-                        <div key={idx}>
+                        <div className="todo-week" key={idx}>
                             <p>{week}</p>
                             {todos[week].map((todo, index) => (
                                 <Todo
@@ -45,6 +47,9 @@ export default function ToDoList({ todo }) {
                 })}
             </div>
             <button onClick={clearTodo}>Clear all</button>
+            <button>
+                <Link to="/survey">New schedule </Link>{" "}
+            </button>
         </>
     );
 }
@@ -57,13 +62,13 @@ function Todo({ todo, index, week, completeTodo }) {
                 textDecoration: todo.isCompleted ? "line-through" : "",
             }}
         >
-            {todo.text}
-            <div>
-                <button onClick={() => completeTodo(index, week)}>
-                    Complete
-                </button>
-            </div>
+            <button
+                className={`btn-${index}`}
+                onClick={() => completeTodo(index, week)}
+            >
+                {todo.isCompleted ? "Done" : "To do"}
+            </button>
+            <p>{todo.text}</p>
         </div>
     );
 }
-

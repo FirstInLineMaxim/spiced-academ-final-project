@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { socket } from './socket';
+import { socket } from "./socket";
 import { useState } from "react";
-import { FaArrowCircleUp, FaTrashAlt} from "react-icons/fa";
-import {  deleteMessage } from "./redux/actions";
+import { IoTrashBinOutline, IoArrowUpCircleOutline } from "react-icons/io5";
+import { deleteMessage } from "./redux/actions";
 
 export default function Chat(props) {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export default function Chat(props) {
             //send message off to server using sockets instead of axios
             //socket.emit will send a message to the server
             socket.emit("New message", e.target.value);
-            e.target.value = '';
+            e.target.value = "";
         }
     };
 
@@ -38,9 +38,9 @@ export default function Chat(props) {
     }
 
     return (
-        <>
+        <div className="chat-page">
             <h1>Welcome to chatroom</h1>
-            <div id="chat-container">
+            <div className="chat-container">
                 <div className="messages-container">
                     {chatMessages &&
                         chatMessages.map((msg) => (
@@ -61,7 +61,7 @@ export default function Chat(props) {
                                 </p>
                                 <p>{msg.message}</p>
                                 {msg.user_id == props.loggedId && (
-                                    <FaTrashAlt
+                                    <IoTrashBinOutline
                                         className="deleteMsg"
                                         onClick={() =>
                                             dispatch(deleteMessage(msg.id))
@@ -75,7 +75,7 @@ export default function Chat(props) {
                     placeholder="Add your message here"
                     onKeyDown={handleKeyDown}
                 />
-                <FaArrowCircleUp
+                <IoArrowUpCircleOutline
                     className="scrollTop"
                     onClick={scrollTop}
                     style={{
@@ -84,6 +84,6 @@ export default function Chat(props) {
                     }}
                 />
             </div>
-        </>
+        </div>
     );
 }

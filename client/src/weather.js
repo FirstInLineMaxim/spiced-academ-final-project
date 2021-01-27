@@ -1,3 +1,4 @@
+//weather
 import axios from "./axios";
 import { useState, useEffect } from "react";
 const { API_key } = require("../../server/secrets.json");
@@ -6,17 +7,20 @@ export default function Weather() {
     const [weather, setWeather] = useState(null);
 
     useEffect(() => {
-        navigator.permissions.query({ name: "geolocation" }).
-            then(({state}) => {
+        navigator.permissions
+            .query({ name: "geolocation" })
+            .then(({ state }) => {
                 if (state == "granted") {
                     console.log(state);
-                    navigator.geolocation.getCurrentPosition(async (position) => {
-                        let { latitude, longitude } = position.coords;
-                        const { data } = await axios.get(
-                            `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=minutely,hourly,daily,alerts&appid=${API_key}`
-                        );
-                        setWeather(data);
-                    });
+                    navigator.geolocation.getCurrentPosition(
+                        async (position) => {
+                            let { latitude, longitude } = position.coords;
+                            const { data } = await axios.get(
+                                `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=minutely,hourly,daily,alerts&appid=${API_key}`
+                            );
+                            setWeather(data);
+                        }
+                    );
                 } else {
                     console.log(state);
                     let location = {
@@ -26,12 +30,13 @@ export default function Weather() {
                     alert(
                         "Geolocation API is not supported in your browser. Getting weather from the website location, which is Berlin."
                     );
-                    axios.get(
-                        `https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&units=metric&exclude=minutely,hourly,daily,alerts&appid=${API_key}`
-                    ).then(({ data }) => {
-                        setWeather(data);
-                    });
-                    
+                    axios
+                        .get(
+                            `https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&units=metric&exclude=minutely,hourly,daily,alerts&appid=${API_key}`
+                        )
+                        .then(({ data }) => {
+                            setWeather(data);
+                        });
                 }
             });
     }, []);
@@ -39,20 +44,20 @@ export default function Weather() {
     if (!weather) {
         return null;
     }
-    
+
     return (
         <>
-            <h2 className="blue">Weather</h2>
+            <h2>Weather</h2>
             <p className="location"> {weather.timezone}</p>
             <div className="temp">
                 <p>Temperature: {Math.round(weather.current.temp)}° C</p>
                 <p>Feels like: {Math.round(weather.current.feels_like)}° C</p>
             </div>
             <div className="descrip">
+                <p>{weather.current.weather[0].description.capitalize()}</p>
                 <img
                     src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`}
                 />
-                <p>{weather.current.weather[0].description.capitalize()}</p>
             </div>
             <div className="others">
                 <p>Humidity: {weather.current.humidity}%</p>
