@@ -15,9 +15,10 @@ export default function Account({ toggleMenu, toggleUploader }) {
     const deleteAccout = () => {
         console.log("deleteaccount");
         axios
-            .post("/delete-account", this.state)
+            .post("/delete-account")
             .then(() => {
                 location.replace("/");
+                localStorage.clear();
             })
             .catch((error) => {
                 console.log("error in deleteaccount", error);
@@ -45,7 +46,8 @@ export default function Account({ toggleMenu, toggleUploader }) {
                             onClick={() =>
                                 window.confirm(
                                     "Are your sure you wish to delete your account?"
-                                ) && deleteAccout
+                                ) && 
+                                deleteAccout()
                             }
                         >
                             Delete account

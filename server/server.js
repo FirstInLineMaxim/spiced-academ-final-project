@@ -275,25 +275,18 @@ app.get('/logout', (req, res) => {
 });
 
 app.post("/delete-account", (req, res) => {
+    console.log('delete');
     db.deleteAccountChat(req.session.userId)
         .then(() => {
             console.log("next");
-            db.deleteAccountFriendships(req.session.userId)
+            db.deleteAccountUsers(req.session.userId)
                 .then(() => {
-                    console.log('next2');
-                    db.deleteAccountUsers(req.session.userId)
-                        .then(() => {
-                            console.log("next3");
-                            req.session.userId = null;
-                            res.redirect("/home");
-                            localStorage.clear();
-                        })
-                        .catch((error) => {
-                            console.log("error deleteAccountUsers", error);
-                        });
+                    console.log("next3");
+                    req.session.userId = null;
+                    res.redirect("/home");
                 })
                 .catch((error) => {
-                    console.log("error deleteAccountFriendships", error);
+                    console.log("error deleteAccountUsers", error);
                 });
         })
         .catch((error) => {
