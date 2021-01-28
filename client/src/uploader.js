@@ -80,7 +80,7 @@ export default class Uploader extends Component {
             <div className="overlay">
                 <div className="uploadModal formField">
                     <div className="header">
-                        <h2>Profile</h2>
+                        <h2>Picture Uploader</h2>
                         {this.state.error && (
                             <p className="errorMessage">
                                 Something went wrong. Please try again

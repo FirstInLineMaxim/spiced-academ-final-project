@@ -19,7 +19,7 @@ body {
     font-size: 1rem;
     h1 {
         font-family: $font-title;
-        margin-left: 1vw;
+        letter-spacing: 1.2rem;
     }
 }
 
@@ -41,7 +41,6 @@ header {
     padding: 1.5vw 3vw;
     height: 6vh;
     background-color: $bcg-color;
-    box-shadow: 0 8px 6px -6px $font-color;
     z-index: 10;
     .profile-img {
         border-radius: 50% 50% 0 50%;
@@ -53,6 +52,14 @@ header {
         vertical-align: middle;
         box-shadow: none;
     }
+    h1 {
+        margin-left: 3vw;
+
+    }
+}
+
+.scroll {
+    box-shadow: 0 8px 6px -6px $fourth-color;
 }
 
 nav {
@@ -145,7 +152,7 @@ a {
         z-index: 2;
         margin-right: 2rem;
         h2 {
-            color: $third-color;
+            color: $secundary-color;
         }
         }
         .item-2 {
@@ -370,7 +377,7 @@ label {
     grid-template-rows: 32%  1fr;
     grid-gap: 2vw;
     .profile-img {
-        height: 19rem;
+        height: 18rem;
         width: 19rem;
         object-fit: cover;
         object-position: center right;
@@ -398,10 +405,10 @@ label {
         background: linear-gradient(180deg, rgba(230, 32, 32, 0) 50%, $primary-color 50%);
     }
     .delete {
-        background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $secundary-color 30%);
+        background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $third-color 30%);
     }
     .delete:hover {
-        background: linear-gradient(180deg, rgba(230, 32, 32, 0) 50%, $secundary-color 50%);
+        background: linear-gradient(180deg, rgba(230, 32, 32, 0) 50%, $third-color 50%);
     }
     .blue {
         color: $secundary-color;
@@ -484,12 +491,74 @@ textarea:focus {
         height: auto;
     }
 }
+.recom-container {
+    margin: 12vh 5vw;
+    min-height: 100vh;
+    .recomendations {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0.5rem 0.5rem;
+        min-height: auto;
+        .card {
+            margin: .5rem 1rem;
+            padding: 1rem;
+            min-height: auto;
+            width: 22rem;
+            border-radius: 15px;
+            h3 {
+                margin: 0 auto;
+                text-align: center;
+                // color: $bcg-color;
+                font-family: $font-title;
+                font-weight: 700;
+            }
+            .more {
+                background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $bcg-color 30%);
+                &:hover {
+                    cursor: pointer;
+                    background: linear-gradient(180deg, rgba(230, 32, 32, 0) 40%, $bcg-color 60%);
+                }
+            }
 
-.recomendations {
+            ul {
+                list-style: none;
+                li {
+                    text-indent: -.7em;
+                    line-height: 1.5rem;
+                    }
+
+                    li::before {
+                    content: "✰";
+                    color: $primary-color;
+                    padding-right: .5em; 
+                    }
+            }
+        }
+        .blue {
+            background-color: $secundary-color;
+        }
+        .green {
+            background-color: $third-color;
+        }
+        .yellow {
+            background-color: $fourth-color;
+        }
+    }
+    p {
+        line-height: 1.5rem;
+    }
+    h1 {
+        letter-spacing: 0.8rem;
+    }
+}
+
+.weather-recomend {
     display: flex;
     flex-direction: column;
     padding: 0.5rem 0.5rem;
-    min-height: auto;
+    min-height: 18rem;
     width: 20rem;
     border-radius: 15px;
     justify-self: center;
@@ -508,6 +577,7 @@ textarea:focus {
     }
 
 }
+
 
 .todo-container {
     grid-column: 3;
@@ -665,6 +735,7 @@ textarea:focus {
         display: flex;
         height: 35rem;
         flex-direction: column;
+        margin-left: 1rem;
         padding: 2vw 2vh;
         border: 2px solid $font-color;
         border-radius: 30px;
@@ -726,33 +797,19 @@ textarea:focus {
             .message-container:nth-child(even) {
                 background-color: rgba(149, 229, 254, 0.2);
             }
-        }
-        .scrollTop {
-            width: 100%;
-            bottom: 20px;
-            align-items: center;
-            height: 20px;
-            justify-content: center;
-            z-index: 1000;
-            cursor: pointer;
-            animation: fadeIn 0.3s;
-            transition: opacity 0.4s;
-            opacity: 0.5;
-            color: $third-color;
-            &:hover{
-                opacity: 1;
-            }
-        }
-              
+        }     
     }
     .aside-image {
         width: 85rem;
         overflow: hidden;
         img {
             max-width:100%;
-            height:80%;
+            height:70%;
             object-fit: cover;
         }
-    }              
+    } 
+    li {
+        padding: .3rem;
+    }             
 }
 

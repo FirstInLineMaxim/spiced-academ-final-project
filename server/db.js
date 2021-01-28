@@ -94,7 +94,7 @@ module.exports.editPassword = (email, password) => {
 /////////////////////////QUERY for upload picture/////////////////////////
 module.exports.getUserProfile = (userId) => {
     const q = `
-        SELECT users.id, first_name, last_name, CONCAT (first_name, ' ', last_name) AS full_name, bio, profile_pic, users.hair_health, hair_type, todo
+        SELECT users.id, first_name, last_name, CONCAT (first_name, ' ', last_name) AS full_name, bio, profile_pic, users.hair_health, hair_type, todo, explanation
         FROM users
         LEFT JOIN survey_results
         ON users.hair_health = survey_results.hair_health

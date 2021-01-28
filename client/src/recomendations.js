@@ -1,148 +1,189 @@
-export default function Recomendations () {
+import { useState } from "react";
+
+export default function Recomendations ({explanation, hair_health}) {
+    const [showOthers, setShowOthers] = useState(false);
+
+    const seeMore = () => {
+        setShowOthers({
+            showOthers: !showOthers,
+        });
+    };
+
     return (
-        <div>
-            <h1>Recomendations</h1>
-            <div>
-                <h2>Moisturise</h2>
-                <div>
-                    <h3>Treatment</h3>
-                    <p>
-                        Run outside as soon as door open spot something, big
-                        eyes, big eyes, crouch, shake butt, prepare to pounce
-                        and peer out window, chatter at birds, lure them to
-                        mouth. Mrow. If it fits i sits eat the fat cats food and
-                        lick sellotape. Paw at your fat belly toilet paper
-                        attack claws fluff everywhere meow miao french ciao
-                        litterbox. Jump up to edge of bath, fall in then
-                        scramble in a mad panic to get out. Meow all night
-                        unwrap toilet paper. Prance along on top of the garden
-                        fence, annoy the neighbors dog and make it bark stretch
-                        i heard this rumor where the humans are our owners,
-                        pfft, what do they know?!. Stuff and things have my
-                        breakfast spaghetti yarn but run outside as soon as door
-                        open. Fall asleep on the washing machine climb a tree,
-                        wait for a fireman jump to fireman then scratch his
-                        face, or eat grass, throw it back up, poop on grasses
-                        poop on grasses i could pee on this if i had the energy.
-                    </p>
+        <div className="recom-container">
+            <h1>Hair Care for {hair_health}</h1>
+            <p>{explanation}</p>
+            {showOthers && (
+                <div className="recomendations">
+                    <div className="card blue">
+                        <h3>Main actives for hair moisture</h3>
+                        <ul>
+                            <li>
+                                D-Panthenol: Provides long-lasting hydration,
+                                softness and shine;
+                            </li>
+                            <li>
+                                Olive Butter: Deep moisturizes hair in the long
+                                term;;
+                            </li>
+                            <li>
+                                Extra Virgin Coconut Oil: Rich in Vitamins E and
+                                Fatty Acid;
+                            </li>
+                            <li>
+                                Aloe Vera: Moisturizes, regenerates and helps
+                                combat hair loss. Natural antioxidant;
+                            </li>
+                            <li>
+                                Functional amino acids: Regenerate the hair
+                                fiber and provide softness, softness and
+                                strength;
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="card yellow">
+                        <h3>Main actives for hair nutrition</h3>
+                        <ul>
+                            <li>
+                                Masks for nutrition: Creams composed by oils and
+                                butters that will replace the oiliness of the
+                                threads during the bath, with fast action that
+                                can vary between two and five minutes;
+                            </li>
+                            <li>
+                                Dampening with vegetable oil: Treatment in which
+                                the hair is bathed with vegetable oils before
+                                being washed. In it, the product is left to act
+                                for 30 minutes and then the washing procedure is
+                                followed normally;
+                            </li>
+                            <li>
+                                Night wetting: Treatment indicated for very dry
+                                hair. The nocturnal humectating is done with
+                                vegetable oils or capillary mayonnaise, which
+                                are applied on “dirty” hair and act on the hair
+                                during sleep, being washed only the next day;
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="card green">
+                        <h3>Main actives for hair reconstruction</h3>
+                        <ul>
+                            <li>
+                                Collagen: Retains water and uniforms cuticles,
+                                in addition to moisturizing, maintaining the
+                                shape of curls and preventing breakage;
+                            </li>
+                            <li>
+                                Creatine: Repairs damage and makes up the
+                                keratin chain of hair;
+                            </li>
+                            <li>
+                                Arginine: Reconstructs hair from the outside in;
+                            </li>
+                            <li>
+                                Cysteine: It acts on the reconstruction and
+                                strengthening of the threads, aligning uniformly
+                                the cuticles.
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                    <h3>Hair Style</h3>
-                    <p>
-                        Run outside as soon as door open spot something, big
-                        eyes, big eyes, crouch, shake butt, prepare to pounce
-                        and peer out window, chatter at birds, lure them to
-                        mouth. Mrow. If it fits i sits eat the fat cats food and
-                        lick sellotape. Paw at your fat belly toilet paper
-                        attack claws fluff everywhere meow miao french ciao
-                        litterbox. Jump up to edge of bath, fall in then
-                        scramble in a mad panic to get out. Meow all night
-                        unwrap toilet paper. Prance along on top of the garden
-                        fence, annoy the neighbors dog and make it bark stretch
-                        i heard this rumor where the humans are our owners,
-                        pfft, what do they know?!. Stuff and things have my
-                        breakfast spaghetti yarn but run outside as soon as door
-                        open. Fall asleep on the washing machine climb a tree,
-                        wait for a fireman jump to fireman then scratch his
-                        face, or eat grass, throw it back up, poop on grasses
-                        poop on grasses i could pee on this if i had the energy.
-                    </p>
+            )}
+            {!showOthers && (
+                <div className="recomendations">
+                    {hair_health == "Moisture" ? (
+                        <div className="card blue">
+                            <h3>Main actives for hair moisture</h3>
+                            <ul>
+                                <li>
+                                    D-Panthenol: Provides long-lasting
+                                    hydration, softness and shine;
+                                </li>
+                                <li>
+                                    Olive Butter: Deep moisturizes hair in the
+                                    long term;;
+                                </li>
+                                <li>
+                                    Extra Virgin Coconut Oil: Rich in Vitamins E
+                                    and Fatty Acid;
+                                </li>
+                                <li>
+                                    Aloe Vera: Moisturizes, regenerates and
+                                    helps combat hair loss. Natural antioxidant;
+                                </li>
+                                <li>
+                                    Functional amino acids: Regenerate the hair
+                                    fiber and provide softness, softness and
+                                    strength;
+                                </li>
+                            </ul>
+                            <span className="more" onClick={seeMore}>
+                                See more!
+                            </span>
+                        </div>
+                    ) : hair_health == "Nutrition" ? (
+                        <div className="card yellow">
+                            <h3>Main actives for hair nutrition</h3>
+                            <ul>
+                                <li>
+                                    Masks for nutrition: Creams composed by oils
+                                    and butters that will replace the oiliness
+                                    of the threads during the bath, with fast
+                                    action that can vary between two and five
+                                    minutes;
+                                </li>
+                                <li>
+                                    Dampening with vegetable oil: Treatment in
+                                    which the hair is bathed with vegetable oils
+                                    before being washed. In it, the product is
+                                    left to act for 30 minutes and then the
+                                    washing procedure is followed normally;
+                                </li>
+                                <li>
+                                    Night wetting: Treatment indicated for very
+                                    dry hair. The nocturnal humectating is done
+                                    with vegetable oils or capillary mayonnaise,
+                                    which are applied on “dirty” hair and act on
+                                    the hair during sleep, being washed only the
+                                    next day;
+                                </li>
+                            </ul>
+                            <span className="more" onClick={seeMore}>
+                                See more!
+                            </span>
+                        </div>
+                    ) : (
+                        <div className="card green">
+                            <h3>Main actives for hair reconstruction</h3>
+                            <ul>
+                                <li>
+                                    Collagen: Retains water and uniforms
+                                    cuticles, in addition to moisturizing,
+                                    maintaining the shape of curls and
+                                    preventing breakage;
+                                </li>
+                                <li>
+                                    Creatine: Repairs damage and makes up the
+                                    keratin chain of hair;
+                                </li>
+                                <li>
+                                    Arginine: Reconstructs hair from the outside
+                                    in;
+                                </li>
+                                <li>
+                                    Cysteine: It acts on the reconstruction and
+                                    strengthening of the threads, aligning
+                                    uniformly the cuticles.
+                                </li>
+                            </ul>
+                            <span className="more" onClick={seeMore}>
+                                See more!
+                            </span>
+                        </div>
+                    )}
                 </div>
-            </div>
-            <div>
-                <h2>Nutrition</h2>
-                <div>
-                    <h3>Treatment</h3>
-                    <p>
-                        Run outside as soon as door open spot something, big
-                        eyes, big eyes, crouch, shake butt, prepare to pounce
-                        and peer out window, chatter at birds, lure them to
-                        mouth. Mrow. If it fits i sits eat the fat cats food and
-                        lick sellotape. Paw at your fat belly toilet paper
-                        attack claws fluff everywhere meow miao french ciao
-                        litterbox. Jump up to edge of bath, fall in then
-                        scramble in a mad panic to get out. Meow all night
-                        unwrap toilet paper. Prance along on top of the garden
-                        fence, annoy the neighbors dog and make it bark stretch
-                        i heard this rumor where the humans are our owners,
-                        pfft, what do they know?!. Stuff and things have my
-                        breakfast spaghetti yarn but run outside as soon as door
-                        open. Fall asleep on the washing machine climb a tree,
-                        wait for a fireman jump to fireman then scratch his
-                        face, or eat grass, throw it back up, poop on grasses
-                        poop on grasses i could pee on this if i had the energy.
-                    </p>
-                </div>
-                <div>
-                    <h3>Hair Style</h3>
-                    <p>
-                        Run outside as soon as door open spot something, big
-                        eyes, big eyes, crouch, shake butt, prepare to pounce
-                        and peer out window, chatter at birds, lure them to
-                        mouth. Mrow. If it fits i sits eat the fat cats food and
-                        lick sellotape. Paw at your fat belly toilet paper
-                        attack claws fluff everywhere meow miao french ciao
-                        litterbox. Jump up to edge of bath, fall in then
-                        scramble in a mad panic to get out. Meow all night
-                        unwrap toilet paper. Prance along on top of the garden
-                        fence, annoy the neighbors dog and make it bark stretch
-                        i heard this rumor where the humans are our owners,
-                        pfft, what do they know?!. Stuff and things have my
-                        breakfast spaghetti yarn but run outside as soon as door
-                        open. Fall asleep on the washing machine climb a tree,
-                        wait for a fireman jump to fireman then scratch his
-                        face, or eat grass, throw it back up, poop on grasses
-                        poop on grasses i could pee on this if i had the energy.
-                    </p>
-                </div>
-            </div>
-            <div>
-                <h2>Reconstruction</h2>
-                <div>
-                    <h3>Treatment</h3>
-                    <p>
-                        Run outside as soon as door open spot something, big
-                        eyes, big eyes, crouch, shake butt, prepare to pounce
-                        and peer out window, chatter at birds, lure them to
-                        mouth. Mrow. If it fits i sits eat the fat cats food and
-                        lick sellotape. Paw at your fat belly toilet paper
-                        attack claws fluff everywhere meow miao french ciao
-                        litterbox. Jump up to edge of bath, fall in then
-                        scramble in a mad panic to get out. Meow all night
-                        unwrap toilet paper. Prance along on top of the garden
-                        fence, annoy the neighbors dog and make it bark stretch
-                        i heard this rumor where the humans are our owners,
-                        pfft, what do they know?!. Stuff and things have my
-                        breakfast spaghetti yarn but run outside as soon as door
-                        open. Fall asleep on the washing machine climb a tree,
-                        wait for a fireman jump to fireman then scratch his
-                        face, or eat grass, throw it back up, poop on grasses
-                        poop on grasses i could pee on this if i had the energy.
-                    </p>
-                </div>
-                <div>
-                    <h3>Hair Style</h3>
-                    <p>
-                        Run outside as soon as door open spot something, big
-                        eyes, big eyes, crouch, shake butt, prepare to pounce
-                        and peer out window, chatter at birds, lure them to
-                        mouth. Mrow. If it fits i sits eat the fat cats food and
-                        lick sellotape. Paw at your fat belly toilet paper
-                        attack claws fluff everywhere meow miao french ciao
-                        litterbox. Jump up to edge of bath, fall in then
-                        scramble in a mad panic to get out. Meow all night
-                        unwrap toilet paper. Prance along on top of the garden
-                        fence, annoy the neighbors dog and make it bark stretch
-                        i heard this rumor where the humans are our owners,
-                        pfft, what do they know?!. Stuff and things have my
-                        breakfast spaghetti yarn but run outside as soon as door
-                        open. Fall asleep on the washing machine climb a tree,
-                        wait for a fireman jump to fireman then scratch his
-                        face, or eat grass, throw it back up, poop on grasses
-                        poop on grasses i could pee on this if i had the energy.
-                    </p>
-                </div>
-            </div>
+            )}
         </div>
     );
 }

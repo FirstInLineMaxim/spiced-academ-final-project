@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { HashRouter, Route } from "react-router-dom";
 import Home from "./home.js";
 import Logo from "./logo";
@@ -9,6 +9,20 @@ import { Link } from "react-router-dom";
 
 
 export default function Welcome() {
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+
+    }, []);
+
+    const handleScroll = () => {
+        if (window.scrollY > 20) {
+            document.querySelector("header").className = "scroll";
+        } else {
+            document.querySelector("header").className = "";
+        }
+    };
+
     return (
         <>
             <HashRouter>

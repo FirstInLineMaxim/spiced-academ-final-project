@@ -33,7 +33,7 @@ export default function Weather() {
                         // lon: "13.384439",
                     };
                     alert(
-                        "Geolocation API is not supported in your browser. Getting weather from the website location, which is Berlin."
+                        "Geolocation API is not supported in your browser. Getting weather from São Paulo."
                     );
                     axios
                         .get(
@@ -72,7 +72,7 @@ export default function Weather() {
                     <p>UV-Index: {weather.current.uvi}</p>
                 </div>
             </div>
-            <div className='recomendations'>
+            <div className='weather-recomend'>
                 <h2>Recomendations</h2>
                 <p>{uviRecomendation(weather.current.uvi)}</p>
                 {tempRecomendation(weather.current.temp).map((item, idx) => (

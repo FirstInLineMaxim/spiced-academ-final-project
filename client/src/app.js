@@ -11,6 +11,7 @@ import Account from "./account";
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { IoBookmarkOutline, IoChatboxOutline } from "react-icons/io5";
+import ProfilePic from "./profilepic";
 
 export default class App extends Component {
     constructor() {
@@ -25,12 +26,14 @@ export default class App extends Component {
             hair_type: "",
             hair_health: "",
             todo: "",
+            explanation: '',
             uploaderIsVisible: false,
             menuIsVisible: false,
         };
     }
 
     componentDidMount() {
+        window.addEventListener("scroll", this.handleScroll);
         axios
             .get("/profile.json")
             .then(({ data }) => {
@@ -38,8 +41,14 @@ export default class App extends Component {
             })
             .catch((error) => {
                 console.log("error", error);
-                // this.props.history.push("/");
             });
+    }
+    handleScroll() {
+        if (window.scrollY > 20) {
+            document.querySelector("header").className = "scroll";
+        } else {
+            document.querySelector("header").className = "";
+        }
     }
 
     toggleUploader() {
@@ -104,13 +113,16 @@ export default class App extends Component {
                                 </li>
                                 <li>
                                     <Link to="/">
-                                        <img
+                                        <ProfilePic
+                                            profile_pic={this.state.profile_pic}
+                                        />
+                                        {/* <img
                                             className="profile-img"
                                             src={
                                                 this.profile_pic ||
                                                 "../default-img.png"
                                             }
-                                        />
+                                        /> */}
                                     </Link>
                                 </li>
                             </ul>
@@ -165,6 +177,7 @@ export default class App extends Component {
                             <Recomendations
                                 hair_type={this.state.hair_type}
                                 hair_health={this.state.hair_health}
+                                explanation={this.state.explanation}
                                 todo={this.state.todo}
                                 match={props.match}
                                 key={props.match.url}

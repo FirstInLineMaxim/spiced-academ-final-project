@@ -22,12 +22,12 @@ export default function ToDoList({todo}) {
         }
     }, []);
 
-    const clearTodo = () => {
-        localStorage.clear();
-        console.log(todos);
-        todos.map(week => (week.map(item => ({...item, isCompleted: false}))));
-        //
-    };
+    // const clearTodo = () => {
+    //     localStorage.clear();
+    //     console.log(todos);
+    //     todos.map(week => (week.map(item => ({...item, isCompleted: false}))));
+    //     //
+    // };
 
     return (
         <>
@@ -50,7 +50,7 @@ export default function ToDoList({todo}) {
                     );
                 })}
             </div>
-            <button onClick={clearTodo}>Clear all</button>
+            {/* <button onClick={clearTodo}>Clear all</button> */}
             <button>
                 <Link to="/survey">New schedule </Link>{" "}
             </button>
@@ -60,19 +60,20 @@ export default function ToDoList({todo}) {
 
 function Todo({ todo, index, week, completeTodo }) {
     return (
-        <div
-            className="todo"
-            style={{
-                textDecoration: todo.isCompleted ? "line-through" : "",
-            }}
-        >
+        <div className="todo">
             <button
                 className={`btn-${index}`}
                 onClick={() => completeTodo(index, week)}
             >
                 {todo.isCompleted ? "Done" : "To do"}
             </button>
-            <p>{todo.text}</p>
+            <p
+                style={{
+                    textDecoration: todo.isCompleted ? "line-through" : "",
+                }}
+            >
+                {todo.text}
+            </p>
         </div>
     );
 }

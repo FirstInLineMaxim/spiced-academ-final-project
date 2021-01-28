@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 const { questionnaire } = require("./helpers/survey.json");
 
 export default function Questionnaire(props) {
-    // console.log(props);
     const [hairType, setHairType] = useState();
     const [hairHealth, sethairHealth] = useState();
     const [hairHealthExplanation, sethairHealthExplanation] = useState();
@@ -30,11 +29,11 @@ export default function Questionnaire(props) {
             setCurrentQuestion(nextQuestion);
         } else {
             if (score < 4) {
-                sethairHealth("healthy");
+                sethairHealth("Moisture");
             } else if (score < 8) {
-                sethairHealth("damaged");
+                sethairHealth("Nutrition");
             } else {
-                sethairHealth("very damaged");
+                sethairHealth("Reconstruction");
             }
             setShowScore(true);
         }
@@ -82,6 +81,17 @@ export default function Questionnaire(props) {
             </div>
             <div className="survey-container">
                 <h1>Questionnaire</h1>
+                {
+                    !showScore && (
+                        <p>
+                            Cold and dry winter weather, chemical treatments, and
+                            sunshine, oh my! So many things can cause damage to
+                            your hair without you even knowing it. Take this
+                            survey to find out the health of your hair and get
+                            tips on how to nurse it back to a shiny, soft state.
+                        </p>
+                    )
+                }
                 {showScore ? (
                     <div className="score-section">
                         <p>
@@ -91,7 +101,7 @@ export default function Questionnaire(props) {
                         <p>{hairHealthExplanation}</p>
                         <p onClick={handleSave}>
                             <span className="save-survey">Click here </span>to
-                            save your questionnaire and go to the profile page
+                            create your hair care routine
                         </p>
                     </div>
                 ) : (

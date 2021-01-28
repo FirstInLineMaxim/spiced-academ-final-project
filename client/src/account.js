@@ -39,20 +39,21 @@ export default function Account({ toggleMenu, toggleUploader }) {
                                 toggleUploader();
                             }}
                         >
-                            Edit profile
+                            Picture Uploader
                         </button>
                         <button
                             className="deleteAcc"
                             onClick={() =>
                                 window.confirm(
                                     "Are your sure you wish to delete your account?"
-                                ) && 
-                                deleteAccout()
+                                ) && deleteAccout()
                             }
                         >
                             Delete account
                         </button>
-                        <button className='logout' onClick={logout}>Logout</button>
+                        <button className="logout" onClick={logout}>
+                            Logout
+                        </button>
                     </div>
                     <div className="outer" onClick={toggleMenu}>
                         <div className="inner">

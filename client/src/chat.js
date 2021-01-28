@@ -21,8 +21,19 @@ export default function Chat(props) {
     return (
         <div className="chat-page">
             <div className="aside-image">
-                <h1>Welcome to chatroom</h1>
-                <p>rules</p>
+                <h2>Chatroom etiquette</h2>
+                <ol>
+                    <li>We are a Hate Free Zone.</li>
+                    <li>Be friendly. Be polite. Be considerate.</li>
+                    <li>
+                        Respect the opinions and practices of others in the
+                        room.
+                    </li>
+                    <li>
+                        Limit negative comments as these have a tendency not to
+                        help anyone’s world view.
+                    </li>
+                </ol>
                 <img src="../chat.svg" />
             </div>
             <div className="chat-container">
