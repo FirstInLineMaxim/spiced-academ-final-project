@@ -26,12 +26,10 @@ export default function Chat(props) {
                     <li>We are a Hate Free Zone.</li>
                     <li>Be friendly. Be polite. Be considerate.</li>
                     <li>
-                        Respect the opinions and practices of others in the
-                        room.
+                        Respect the opinions and practices of others in our community.
                     </li>
                     <li>
-                        Limit negative comments as these have a tendency not to
-                        help anyone’s world view.
+                        Try to give constructive feedback and spread love ❤︎.
                     </li>
                 </ol>
                 <img src="../chat.svg" />

@@ -186,7 +186,18 @@ a {
     h2 {
         font-family: $font-title;
         text-transform: uppercase;
-        h2:nth
+    }
+    h3 {
+        font-family: $font-title;
+        text-transform: uppercase;
+        color: $primary-color;
+        text-align: center;
+    }
+    span {
+        background: linear-gradient(180deg, rgba(230, 32, 32, 0) 70%, $third-color 30%);
+        &:hover {
+            background: linear-gradient(180deg, rgba(230, 32, 32, 0) 40%, $third-color 60%);
+        }
     }
 }
 
@@ -518,6 +529,7 @@ textarea:focus {
                 background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $bcg-color 30%);
                 &:hover {
                     cursor: pointer;
+                    font-weight: 700;
                     background: linear-gradient(180deg, rgba(230, 32, 32, 0) 40%, $bcg-color 60%);
                 }
             }
@@ -604,7 +616,7 @@ textarea:focus {
         border-radius: 50px;
         background-color: $primary-color;
         outline: none;
-        font-size: calc(0.4rem + 1vmin);
+        font-size: calc(0.3rem + 1vmin);
         color: $font-color;
         text-align: center;
         cursor: pointer;
@@ -629,6 +641,9 @@ textarea:focus {
     }
     .btn-2 {
         background-color: $secundary-color;
+    }
+    .week {
+        font-weight: 700;;
     }
 }
 

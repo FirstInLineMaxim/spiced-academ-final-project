@@ -148,7 +148,7 @@ export default class ResetPassword extends Component {
                     <div className="header">
                         <h2>Reset Password</h2>
                         <p>
-                            Please your e-mail and we will send to your the
+                            Please enter your e-mail to receive a
                             reset code
                         </p>
                         {this.state.error && (

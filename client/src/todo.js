@@ -36,7 +36,7 @@ export default function ToDoList({todo}) {
                 {Object.keys(todos || {}).map((week, idx) => {
                     return (
                         <div className="todo-week" key={idx}>
-                            <p>{week}</p>
+                            <p className='week'>{week}</p>
                             {todos[week].map((todo, index) => (
                                 <Todo
                                     key={index}

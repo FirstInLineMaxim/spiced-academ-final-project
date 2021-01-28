@@ -25,28 +25,18 @@ export default function Home() {
             <div className="home-page">
                 <div className="grid">
                     <div className="item-1">
-                        <h2>
-                            I am baby biodiesel four loko copper mug hoodie.
-                        </h2>
+                        <h2>Get Your Dream Hair</h2>
                         <p>
-                            I am baby biodiesel four loko copper mug hoodie.
-                            Stumptown scenester selfies pinterest. Succulents
-                            bitters shoreditch, microdosing organic messenger
-                            bag mixtape thundercats beard typewriter street art
-                            health goth VHS DIY godard. Gluten-free pinterest
-                            kinfolk kogi thundercats seitan taiyaki. Iceland
-                            retro fixie plaid chillwave etsy single-origin
-                            coffee live-edge vaporware air plant knausgaard
-                            williamsburg glossier. I am baby biodiesel four loko
-                            copper mug hoodie. Stumptown scenester selfies
-                            pinterest. Succulents bitters shoreditch,
-                            microdosing organic messenger bag mixtape
-                            thundercats beard typewriter street art health goth
-                            VHS DIY godard. Gluten-free pinterest kinfolk kogi
-                            thundercats seitan taiyaki. Iceland retro fixie
-                            plaid chillwave etsy single-origin coffee live-edge
-                            vaporware air plant knausgaard williamsburg
-                            glossier.
+                            Finding the right products and creating a hair care
+                            routine that fits your type is a very personal and
+                            challenging process. This is why we want to help
+                            you.
+                            <h3>What is the hair care schedule?</h3>
+                            <p>
+                                Basically, it is a treatment schedule that
+                                preserves and improves the health of your hair
+                                to keep them shiny and smooth.
+                            </p>
                         </p>
                     </div>
                     <div className="item-2 aside-image">
@@ -55,28 +45,16 @@ export default function Home() {
                 </div>
                 <div className="grid">
                     <div className="item-1 bottom-1">
-                        <h2>
-                            I am baby biodiesel four loko copper mug hoodie.
-                        </h2>
+                        <h2>Customize Your Hair Care Routine</h2>
                         <p>
-                            I am baby biodiesel four loko copper mug hoodie.
-                            Stumptown scenester selfies pinterest. Succulents
-                            bitters shoreditch, microdosing organic messenger
-                            bag mixtape thundercats beard typewriter street art
-                            health goth VHS DIY godard. Gluten-free pinterest
-                            kinfolk kogi thundercats seitan taiyaki. Iceland
-                            retro fixie plaid chillwave etsy single-origin
-                            coffee live-edge vaporware air plant knausgaard
-                            williamsburg glossier. I am baby biodiesel four loko
-                            copper mug hoodie. Stumptown scenester selfies
-                            pinterest. Succulents bitters shoreditch,
-                            microdosing organic messenger bag mixtape
-                            thundercats beard typewriter street art health goth
-                            VHS DIY godard. Gluten-free pinterest kinfolk kogi
-                            thundercats seitan taiyaki. Iceland retro fixie
-                            plaid chillwave etsy single-origin coffee live-edge
-                            vaporware air plant knausgaard williamsburg
-                            glossier.
+                            While creating your profile, you specify your hair
+                            type, style and condition to discover what
+                            your hair really needs. <br></br>Change your
+                            routine whenever you want.<br></br>
+                            <br></br>
+                            <Link to="/registration">
+                                <span>Your journey starts here!</span>
+                            </Link>
                         </p>
                     </div>
                     <div className="item-2 bottom-2 aside-image">

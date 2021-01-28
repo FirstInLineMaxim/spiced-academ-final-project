@@ -39,7 +39,7 @@ export default function Account({ toggleMenu, toggleUploader }) {
                                 toggleUploader();
                             }}
                         >
-                            Picture Uploader
+                            Edit Picture
                         </button>
                         <button
                             className="deleteAcc"

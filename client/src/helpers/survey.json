@@ -1,12 +1,12 @@
 { "questionnaire": 
     [
         {
-            "questionText": "What is the natural curvature of your hair?",
+            "questionText": "What is the natural texture of your hair?",
             "answerOptions": [
                 { "answerText": "Straight" },
                 { "answerText": "Wavy" },
                 { "answerText": "Curly" },
-                { "answerText": "Kinky" }
+                { "answerText": "Coily" }
             ]
         },
         {

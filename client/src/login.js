@@ -42,7 +42,7 @@ export default class Login extends Component {
             <div className="formField">
                 <div className="header">
                     <h2>Login</h2>
-                    <p>login here using your email and password</p>
+                    <p>Enter with your email and password</p>
                     {this.state.error && (
                         <p className="errorMessage">
                             Something went wrong. Please try again

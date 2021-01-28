@@ -49,10 +49,7 @@ export default class Registration extends Component {
                     <div className="form">
                         <div className="header">
                             <h2>Registration</h2>
-                            <p>
-                                join millions of cool peolple sharing their
-                                experiences
-                            </p>
+                            <p>Your journey starts here! Set up your profile.</p>
                             {this.state.error && (
                                 <p>
                                     <span className="errorMessage">

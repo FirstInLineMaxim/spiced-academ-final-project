@@ -16,7 +16,7 @@ export default function Questionnaire(props) {
             answer == "Straight" ||
             answer == "Wavy" ||
             answer == "Curly" ||
-            answer == "Kinky"
+            answer == "Coily"
         ) {
             setHairType(answer);
         }
@@ -80,7 +80,7 @@ export default function Questionnaire(props) {
                 {showScore && <img src="../survey2.svg" />}
             </div>
             <div className="survey-container">
-                <h1>Questionnaire</h1>
+                <h1>Survey</h1>
                 {
                     !showScore && (
                         <p>
@@ -95,8 +95,8 @@ export default function Questionnaire(props) {
                 {showScore ? (
                     <div className="score-section">
                         <p>
-                            You have a <span>{hairType}</span> and based on your
-                            answer, your hair is <span>{hairHealth}</span>.
+                            You have <span>{hairType}</span> hair and based on your
+                            answers, your hair needs <span>{hairHealth}</span>.
                         </p>
                         <p>{hairHealthExplanation}</p>
                         <p onClick={handleSave}>

@@ -99,7 +99,7 @@ export default class BioEditor extends Component {
 
                         {this.props.bio && !this.state.textareaVisible && (
                             <p onClick={(e) => this.deleteBio(e)}>
-                                <span className="delete">Delete Bio</span>
+                                <span className="delete">Delete bio</span>
                             </p>
                         )}
 
