@@ -1,7 +1,7 @@
 # Purãngaw
 A hair care platform created in 6 days as a final project in [Spiced Academy](https://github.com/spicedacademy) Bootcamp. **Purãngaw**, which means beauty in the Tupi-Guarani language, was developed to help
-the users to create a hair care routine that fits in its hair needs.
-While creating a profile, the user specify its hair type, style, and condition to discover its hair needs.
+the users to create a hair care routine that fits in their hair needs.
+While creating a profile, the user specifies its hair type, style, and condition to discover its hair needs.
 ## Table of contents
 * [What I used?](##What-I-used?)
 * [Setup]()
