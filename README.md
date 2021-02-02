@@ -3,15 +3,16 @@ A hair care platform created in 6 days as a final project in [Spiced Academy](ht
 the users to create a hair care routine that fits in their hair needs.
 While creating a profile, the user specifies its hair type, style, and condition to discover its hair needs.
 ## Table of contents
-* [What I used?](##What-I-used?)
-* [Setup]()
-* [What I have?](##What-I-have?)
-* [Showroom](##Showroom)
-* [What is next?](##What-is-next?)
-* [Inspiration](##Inspiration)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Features](#features)
+* [Showroom](#showroom)
+* [To-do](#to-do)
+* [Inspiration](#inspiration)
 
 
-## What I used?
+## Technologies
+Project is created with:
 * HTML, SCSS, Node.js / Express, PostgreSQL, React, React Hooks, Redux. Socket.io;
 * OpenWeatherMap API, AWS - S3
 * Csurf, Cookie Session, Bcrypt
@@ -19,8 +20,7 @@ While creating a profile, the user specifies its hair type, style, and condition
 ## Setup
 Clone this repo to your desktop and run ```npm install``` to install all the dependencies.
 
-## What I have?
-All the features:
+## Features
 * Landing page
 * Registration / Login
   * Reset password
@@ -66,7 +66,7 @@ All the features:
 ### Logout
 ![](/client/public/logout.gif)
 
-## What is next?
+## To-do
 Next functionalities I want to add:
 - [ ] Mobile responsiveness
 - [ ] Notification about new messages on chatroom in header
