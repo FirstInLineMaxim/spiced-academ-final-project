@@ -53,10 +53,8 @@ const cookieSessionMiddleware =
         maxAge: 1000 * 60 * 60 * 24 * 7 * 6,
     });
 
-//this MUST come after cookie session
 app.use(cookieSessionMiddleware);
 
-//this is socket stuff
 io.use(function (socket, next) {
     cookieSessionMiddleware(socket.request, socket.request.res, next);
 });
@@ -340,7 +338,6 @@ app.get("/questionnaire-results/:hairHealth", (req, res) => {
     }
 });
 
-//ALWAYS AT THE END BEFORE THE app.listen
 app.get("*", function (req, res) {
     if (!req.session.userId) {
         res.redirect("/home");
@@ -353,17 +350,8 @@ server.listen(process.env.PORT || 3001, function () {
     console.log("I'm listening.");
 });
 
-//this is our socket code. we will write 100% of our erver-side socket code here
 io.on('connection', (socket) => {
-    // console.log(`Socket with id ${socket.id} just connected!`);
-    // console.log(
-    //     `UserId ${socket.request.session.userId} just connected!`
-    // );
-
-    //when the user post a new message...
     socket.on("New message", (data) => {
-        //this will run whatever the user posts a new chat message!
-        //1. INSERT new message into a our new 'chat_messages' table
         db.newMessage(socket.request.session.userId, data)
             .then(({ rows }) => {
                 const { message, create_at, id } = rows[0];
@@ -385,7 +373,6 @@ io.on('connection', (socket) => {
             });
     });
 
-    //code for redenring the messages
     db.getMostRecentMessages()
         .then(({ rows }) => {
             socket.emit("Most recent messages", rows);
@@ -395,6 +382,5 @@ io.on('connection', (socket) => {
         });
     
     socket.on("disconnect", () => {
-        // console.log(`Socket with id: ${socket.id} just disconnected`);
     });
-});// closes io.on('connection')
+});

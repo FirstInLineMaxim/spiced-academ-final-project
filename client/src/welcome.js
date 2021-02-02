@@ -31,7 +31,7 @@ export default function Welcome() {
                         <Link to="/">
                             <Logo />
                         </Link>
-                        <h1>DUAFE</h1>
+                        <h1>Purãngaw</h1>
                         <nav>
                             <ul>
                                 <li>

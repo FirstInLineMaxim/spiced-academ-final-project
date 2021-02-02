@@ -90,9 +90,9 @@ export default class App extends Component {
             <BrowserRouter>
                 <>
                     <header>
-                        <Link to="/home">
+                        <a href="/home#/">
                             <Logo />
-                        </Link>
+                        </a>
                         <h1>Purãngaw</h1>
                         <nav>
                             <ul>
