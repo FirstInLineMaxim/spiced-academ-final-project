@@ -31,13 +31,14 @@ export default function Home() {
                             routine that fits your type is a very personal and
                             challenging process. This is why we want to help
                             you.
-                            <h3>What is the hair care schedule?</h3>
-                            <p>
+                        </p>
+                        <h3>What is the hair care schedule?</h3>
+                        <p>
                                 Basically, it is a treatment schedule that
                                 preserves and improves the health of your hair
                                 to keep them shiny and smooth.
-                            </p>
                         </p>
+                        
                     </div>
                     <div className="item-2 aside-image">
                         <img src="../home1.png" />
