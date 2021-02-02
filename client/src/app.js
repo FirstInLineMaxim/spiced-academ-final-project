@@ -93,7 +93,7 @@ export default class App extends Component {
                         <Link to="/home">
                             <Logo />
                         </Link>
-                        <h1>DUAFE</h1>
+                        <h1>Purãngaw</h1>
                         <nav>
                             <ul>
                                 <li>
