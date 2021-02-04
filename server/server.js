@@ -274,7 +274,7 @@ app.get('/logout', (req, res) => {
 });
 
 app.post("/delete-account", (req, res) => {
-    console.log('delete');
+    s3.delete(req.session.userId);
     db.deleteAccountChat(req.session.userId)
         .then(() => {
             console.log("next");
