@@ -68,6 +68,7 @@ Clone this repo to your desktop and run ```npm install``` to install all the dep
 
 ## To-do
 Next functionalities I want to add:
+- [x] Add progressbar on Survey's page
 - [ ] Mobile responsiveness
 - [ ] Notification about new messages on chatroom in header
 - [ ] Add a reminders feature to the to-do list
