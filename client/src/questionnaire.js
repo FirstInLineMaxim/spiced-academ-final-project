@@ -1,5 +1,7 @@
 import axios from "./axios";
 import { useState, useEffect } from "react";
+import Progressbar from "./Progressbar";
+
 const { questionnaire } = require("./helpers/survey.json");
 
 export default function Questionnaire(props) {
@@ -81,22 +83,21 @@ export default function Questionnaire(props) {
             </div>
             <div className="survey-container">
                 <h1>Survey</h1>
-                {
-                    !showScore && (
-                        <p>
-                            Cold and dry winter weather, chemical treatments, and
-                            sunshine, oh my! So many things can cause damage to
-                            your hair without you even knowing it. Take this
-                            survey to find out the health of your hair and get
-                            tips on how to nurse it back to a shiny, soft state.
-                        </p>
-                    )
-                }
+                {!showScore && (
+                    <p>
+                        Cold and dry winter weather, chemical treatments, and
+                        sunshine, oh my! So many things can cause damage to your
+                        hair without you even knowing it. Take this survey to
+                        find out the health of your hair and get tips on how to
+                        nurse it back to a shiny, soft state.
+                    </p>
+                )}
                 {showScore ? (
                     <div className="score-section">
                         <p>
-                            You have <span>{hairType}</span> hair and based on your
-                            answers, your hair needs <span>{hairHealth}</span>.
+                            You have <span>{hairType}</span> hair and based on
+                            your answers, your hair needs{" "}
+                            <span>{hairHealth}</span>.
                         </p>
                         <p>{hairHealthExplanation}</p>
                         <p onClick={handleSave}>
@@ -107,11 +108,12 @@ export default function Questionnaire(props) {
                 ) : (
                     <>
                         <div className="questions-section">
+                            <Progressbar
+                                value={currentQuestion + 1}
+                                minValue={0}
+                                maxValue={questionnaire.length}
+                            />
                             <p>
-                                <span>
-                                    Question {currentQuestion + 1}/
-                                    {questionnaire.length}:
-                                </span>{" "}
                                 {questionnaire[currentQuestion].questionText}
                             </p>
                         </div>

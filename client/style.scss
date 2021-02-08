@@ -684,14 +684,6 @@ textarea:focus {
     display: flex;
     flex-direction: column;
     margin: 15vh 5vw;
-    span:nth-child(1) {
-        background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $secundary-color 30%);
-        font-weight: 700;
-    }
-    span:nth-child(2) {
-        background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $third-color 30%);
-        font-weight: 700;
-    }
     span.save-survey {
         background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $fourth-color 30%);
         font-weight: 700;
@@ -738,7 +730,16 @@ textarea:focus {
         border-bottom-left-radius: 70px;
         border-bottom-right-radius: 70px;
     }
-    
+     .score-section {
+        span:nth-child(1) {
+        background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $secundary-color 30%);
+        font-weight: 700;
+        }
+        span:nth-child(2) {
+            background: linear-gradient(180deg, rgba(230, 32, 32, 0)70%, $third-color 30%);
+            font-weight: 700;
+        }
+    }
 }
 
 .chat-page {
@@ -828,3 +829,28 @@ textarea:focus {
     }             
 }
 
+.progress-bar {
+    margin: 1rem;
+    height: 1.5rem;
+    width: 90%;
+    // box-shadow: 1px 1px 5px 1px $secundary-color;
+    border-radius: 50px;
+    border: 2px solid $font-color;
+}
+
+.filler {
+    background-color: $secundary-color;
+    width: 1%;
+    height: 100%;
+    border-radius: inherit;
+    transition: width 1s ease-in-out;
+    display: flex;
+    span {
+        background: none;
+        text-align: right;
+        flex: 1;
+        padding: .25rem .25rem;
+        font-size: .85rem;
+        font-weight: 300;
+    }
+}
