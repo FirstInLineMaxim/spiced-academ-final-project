@@ -11,9 +11,8 @@ export default function Profile(props) {
             />
             <div className="bio-cropper">
                 <h1>{props.full_name}</h1>
-                <p>
-                    <span>{props.hair_type} </span> hair and
-                    <span> {props.hair_health}</span> routine
+                <p className="hair-details">
+                    <span>{props.hair_type} hair and {props.hair_health} routine </span>
                 </p>
                 <BioEditor setBio={props.setBio} bio={props.bio} />
             </div>

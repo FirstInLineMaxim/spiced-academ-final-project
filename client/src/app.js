@@ -34,10 +34,11 @@ export default class App extends Component {
 
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
+        
         axios
             .get("/profile.json")
             .then(({ data }) => {
-                this.setState({ ...data });
+                this.setState({ ...data });   
             })
             .catch((error) => {
                 console.log("error", error);
@@ -116,13 +117,6 @@ export default class App extends Component {
                                         <ProfilePic
                                             profile_pic={this.state.profile_pic}
                                         />
-                                        {/* <img
-                                            className="profile-img"
-                                            src={
-                                                this.profile_pic ||
-                                                "../default-img.png"
-                                            }
-                                        /> */}
                                     </Link>
                                 </li>
                             </ul>
