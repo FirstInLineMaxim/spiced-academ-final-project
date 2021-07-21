@@ -1,11 +1,16 @@
 //weather
 import axios from "./axios";
 import { useState, useEffect } from "react";
-const { API_key } = require("../../server/secrets.json");
 import {
     uviRecomendation,
     tempRecomendation,
 } from "./helpers/weatherRecomentations";
+
+let API_key;
+
+process.env.NODE_ENV === "production"
+    ? (API_key = process.env)
+    : ({ API_key } = require("../../server/secrets.json"));
 
 
 export default function Weather() {

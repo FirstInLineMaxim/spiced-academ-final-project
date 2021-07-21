@@ -308,7 +308,6 @@ app.post('/delete-comment', (req, res) => {
 
 app.post("/questionnaire", (req, res) => {
     const { hairType, hairHealth } = req.body;
-    console.log("post request on /questionnaire", req.body);
     db.addSurveyResults(req.session.userId, hairType, hairHealth)
         .then(() => {
             console.log("addSurveyResults worked");
@@ -321,7 +320,6 @@ app.post("/questionnaire", (req, res) => {
 });
 
 app.get("/questionnaire-results/:hairHealth", (req, res) => {
-    console.log("get request to /questionnaire-results", req.params);
     const { hairHealth } = req.params;
     if (hairHealth != 'undefined') {
         db.getSurveyResults(hairHealth)
